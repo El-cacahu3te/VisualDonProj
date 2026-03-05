@@ -1,5 +1,6 @@
 # VisualDonProj
 
+
 ## Contexte
 Ce projet s'inscrit dans le cadre du cours de Visualisation de données du Bachelor en Ingénierie des médias, sous la direction de Noemi Romano.
 
@@ -7,6 +8,7 @@ Les données mobilisées proviennent d'initiatives de "counter-data" (contre-don
 
 ### Biais et enjeux 
 L'objectif est de déconstruire les systèmes de classification binaires et hiérarchiques. En collectant ces données, les auteurs cherchent à rendre visible ce que les institutions ignorent parfois : le caractère systémique du féminicide, qui n'est pas un fait divers isolé mais l'aboutissement d'un continuum de violences.
+
 
 ## Description 
 Les données se présentent sous une forme hybride, mêlant des structures quantitatives rigoureuses et des récits qualitatifs.
@@ -24,6 +26,7 @@ Qualitatifs : Brèves descriptions des circonstances, offrant une dimension huma
 ### Type de données
 Données discrètes (comptage) et nominales (catégories de liens), complétées par des données textuelles.
 
+
 ## But
 Notre approche est à la fois exploratoire et explicative. Nous ne souhaitons pas uniquement présenter des chiffres froids, mais raconter une trajectoire de vie : celle d'une femme qui subit des injustices systémiques dès son plus jeune âge.
 
@@ -34,6 +37,7 @@ La visualisation suit le parcours d'une femme qui "se fane" au fil du temps. Cha
 Sensibiliser : Adopter un ton humain et non-offensif pour susciter l'empathie.
 Dénoncer : Montrer que ces drames ne sont pas lointains, mais se produisent ici, en Suisse.
 Humaniser : Énumérer tout ce qui est "enlevé" à une femme lorsqu'on lui ôte la vie, transformant une statistique de décès en une perte de potentiel de vie.
+
 
 ## Références
 Le projet s'appuie sur des références majeures du journalisme de données et de la recherche intersectionnelle :
