@@ -36,7 +36,7 @@ La visualisation suit le parcours d'une femme qui "se fane" au fil du temps. Cha
 ### L'objectif
 Sensibiliser : Adopter un ton humain et non-offensif pour susciter l'empathie.<br>
 Dénoncer : Montrer que ces drames ne sont pas lointains, mais se produisent ici, en Suisse.<br>
-Humaniser : Énumérer tout ce qui est "enlevé" à une femme lorsqu'on lui ôte la vie, transformant une statistique de décès en une perte de potentiel de vie.
+Humaniser : Énumérer tout ce qui est "enlevé" à une femme durant mais également losqu'on lui ôte la vie, transformant une statistique de décès en une perte de potentiel de vie.
 <br>
 <br>
 ## Références
