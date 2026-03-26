@@ -12,8 +12,7 @@
       <h1>La vie de Carole</h1>
     </div>
     <div id="lesJouets"> 
-      <h2>Les jouets désirés par les enfants de 2ans</h2>
-      <p>Naturellement</p>
+§      <p>Naturellement</p>
       <p>Influensé</p>
     </div>
     <div id="leSport">
@@ -38,3 +37,456 @@
     
   </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freins à la pratique sportive féminine</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    background: #0a0a0a;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+  }
+
+  #horizontal-container {
+    display: flex;
+    width: 600vw;
+    height: 100vh;
+  }
+
+  .panel {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .label {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .label h2 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    color: #e0e0e0;
+  }
+
+  .label p {
+    font-size: 1rem;
+    color: #aaa;
+    margin-top: 0.5rem;
+  }
+
+  .label .percent {
+    font-size: 3rem;
+    color: #fff;
+    margin-top: 0.3rem;
+  }
+
+  #scroll-hint {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    color: #555;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    z-index: 20;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div id="horizontal-container">
+  <div class="panel" id="panel-0"></div>
+  <div class="panel" id="panel-1">
+    <div class="label" id="label-1">
+      <h2>Coût & accessibilité</h2>
+      <div class="percent">23%</div>
+      <p>des répondantes citent ce frein</p>
+    </div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="label" id="label-2">
+      <h2>Harcèlement & environnement</h2>
+      <div class="percent">31%</div>
+      <p>des répondantes citent ce frein</p>
+    </div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="label" id="label-3">
+      <h2>Image corporelle</h2>
+      <div class="percent">38%</div>
+      <p>des répondantes citent ce frein</p>
+    </div>
+  </div>
+  <div class="panel" id="panel-4">
+    <div class="label" id="label-4">
+      <h2>Les règles</h2>
+      <div class="percent">52%</div>
+      <p>des répondantes citent ce frein</p>
+    </div>
+  </div>
+  <div class="panel" id="panel-5">
+    <div class="label" id="label-5">
+      <h2></h2>
+    </div>
+  </div>
+</div>
+
+<div id="scroll-hint">scroll →</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const W = canvas.width;
+const H = canvas.height;
+
+// --- CONFIG ---
+const TOTAL = 101; // représentation proportionnelle ~1:5
+const ARCHER_X = W * 0.08;
+const ARCHER_Y = H * 0.5;
+const TARGET_X = W * 0.88;
+const TARGET_Y = H * 0.5;
+
+// Freins dans l'ordre croissant
+// Chaque vague retire un % supplémentaire du total restant
+const WAVES = [
+  { frein: "Coût & accessibilité",        pct: 0.23 },
+  { frein: "Harcèlement & environnement", pct: 0.31 },
+  { frein: "Image corporelle",            pct: 0.38 },
+  { frein: "Les règles",                  pct: 0.52 },
+];
+
+// Calculer combien tombent à chaque vague (cumulatif)
+// On part de 101 flèches, chaque vague élimine sa proportion du total initial
+let fallen = 0;
+const waveFallCounts = [];
+let remaining = TOTAL;
+
+// On veut qu'à la fin il reste ~48% = 49 flèches
+// Chaque vague élimine un delta progressif
+const targets = WAVES.map(w => Math.round(w.pct * TOTAL));
+// deltas : combien tombent à cette vague (en plus des précédentes)
+const deltas = [];
+let prevTarget = 0;
+for (let i = 0; i < targets.length; i++) {
+  deltas.push(Math.max(0, targets[i] - prevTarget));
+  prevTarget = targets[i];
+}
+
+// --- FLÈCHES ---
+class Arrow {
+  constructor(index) {
+    this.index = index;
+    // Position de départ : groupées autour de l'archère
+    this.startX = ARCHER_X + 40;
+    this.startY = ARCHER_Y + (Math.random() - 0.5) * 60;
+    // Position cible : constellation vers la target
+    this.targetX = TARGET_X - 30 + (Math.random() - 0.5) * 60;
+    this.targetY = TARGET_Y + (Math.random() - 0.5) * 120;
+    // Position "tombée" : en dessous de la scène
+    this.fallX = this.startX + Math.random() * (TARGET_X - ARCHER_X) * 0.9;
+    this.fallY = H + 80;
+    
+    this.x = this.startX;
+    this.y = this.startY;
+    this.angle = 0;
+    this.alpha = 1;
+    this.fallen = false;
+    this.launched = false;
+    this.progress = 0; // 0 = at start, 1 = at target
+  }
+
+  draw() {
+    if (!this.launched) return;
+    ctx.save();
+    ctx.globalAlpha = this.alpha;
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.angle);
+    
+    // Corps de la flèche
+    ctx.strokeStyle = this.fallen ? '#555' : '#d4c5a9';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-12, 0);
+    ctx.lineTo(12, 0);
+    ctx.stroke();
+    
+    // Pointe
+    ctx.fillStyle = this.fallen ? '#444' : '#c0a870';
+    ctx.beginPath();
+    ctx.moveTo(12, 0);
+    ctx.lineTo(8, -2.5);
+    ctx.lineTo(8, 2.5);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Empennage
+    ctx.strokeStyle = this.fallen ? '#444' : '#8a7a6a';
+    ctx.beginPath();
+    ctx.moveTo(-12, 0);
+    ctx.lineTo(-16, -4);
+    ctx.moveTo(-12, 0);
+    ctx.lineTo(-16, 4);
+    ctx.stroke();
+    
+    ctx.restore();
+  }
+}
+
+const arrows = [];
+for (let i = 0; i < TOTAL; i++) {
+  arrows.push(new Arrow(i));
+}
+
+// Assigner quelles flèches tombent à quelle vague
+let assigned = [];
+let pool = [...Array(TOTAL).keys()];
+// Mélanger
+pool.sort(() => Math.random() - 0.5);
+
+let cursor = 0;
+const waveAssignments = [];
+for (let w = 0; w < deltas.length; w++) {
+  waveAssignments.push(pool.slice(cursor, cursor + deltas[w]));
+  cursor += deltas[w];
+}
+
+// --- ANIMATION STATE ---
+let launchProgress = 0; // 0→1 : les flèches décollent
+let waveProgress = [0, 0, 0, 0]; // 0→1 pour chaque vague
+
+// GSAP timeline progress
+const state = {
+  launch: 0,
+  wave0: 0,
+  wave1: 0,
+  wave2: 0,
+  wave3: 0,
+  scrollX: 0,
+};
+
+// --- RENDER LOOP ---
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function render() {
+  ctx.clearRect(0, 0, W, H);
+  
+  // Dessiner l'archère (simple silhouette)
+  drawArcher();
+  
+  // Dessiner la cible
+  drawTarget();
+  
+  // Mise à jour et dessin des flèches
+  for (let i = 0; i < TOTAL; i++) {
+    const a = arrows[i];
+    
+    if (state.launch <= 0) { a.launched = false; continue; }
+    
+    // Lancement progressif : les flèches décollent en séquence
+    const launchThreshold = i / TOTAL;
+    if (state.launch < launchThreshold) { continue; }
+    a.launched = true;
+    
+    // Déterminer si tombée et à quelle vague
+    let fallWave = -1;
+    for (let w = 0; w < 4; w++) {
+      if (waveAssignments[w].includes(i)) { fallWave = w; break; }
+    }
+    
+    const waveKey = `wave${fallWave}`;
+    const waveVal = fallWave >= 0 ? state[waveKey] : 0;
+    
+    if (fallWave >= 0 && waveVal > 0) {
+      // Cette flèche tombe
+      a.fallen = true;
+      const t = Math.min(waveVal, 1);
+      // Arc de chute
+      a.x = lerp(lerp(a.startX, a.fallX, t), a.fallX, t);
+      a.y = lerp(a.startY, a.fallY, Math.pow(t, 1.5));
+      a.angle = lerp(0, Math.PI / 2, t);
+      a.alpha = lerp(1, 0.2, t);
+    } else if (fallWave >= 0 && waveVal === 0) {
+      // Pas encore tombée : en vol vers la target
+      const flyT = Math.min((state.launch - launchThreshold) / (1 - launchThreshold + 0.001), 1);
+      a.x = lerp(a.startX, a.targetX, flyT);
+      a.y = lerp(a.startY, a.targetY, flyT);
+      a.angle = Math.atan2(a.targetY - a.startY, a.targetX - a.startX);
+      a.alpha = 1;
+    } else {
+      // Survivante : en vol
+      const flyT = Math.min((state.launch - launchThreshold) / (1 - launchThreshold + 0.001), 1);
+      a.x = lerp(a.startX, a.targetX, flyT);
+      a.y = lerp(a.startY, a.targetY, flyT);
+      a.angle = Math.atan2(a.targetY - a.startY, a.targetX - a.startX);
+      a.alpha = 1;
+    }
+    
+    a.draw();
+  }
+  
+  requestAnimationFrame(render);
+}
+
+function drawArcher() {
+  const x = ARCHER_X;
+  const y = ARCHER_Y;
+  ctx.save();
+  ctx.strokeStyle = '#c8b89a';
+  ctx.fillStyle = '#c8b89a';
+  ctx.lineWidth = 2;
+  
+  // Tête
+  ctx.beginPath();
+  ctx.arc(x, y - 38, 8, 0, Math.PI * 2);
+  ctx.fill();
+  
+  // Corps
+  ctx.beginPath();
+  ctx.moveTo(x, y - 30);
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  
+  // Bras tendus (arc)
+  ctx.beginPath();
+  ctx.moveTo(x - 10, y - 18);
+  ctx.lineTo(x + 18, y - 10);
+  ctx.stroke();
+  
+  // Jambes
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - 8, y + 28);
+  ctx.moveTo(x, y);
+  ctx.lineTo(x + 8, y + 28);
+  ctx.stroke();
+  
+  // Arc (courbe)
+  ctx.strokeStyle = '#8a7050';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.arc(x + 18, y - 10, 22, -Math.PI * 0.6, Math.PI * 0.3);
+  ctx.stroke();
+  
+  ctx.restore();
+}
+
+function drawTarget() {
+  const x = TARGET_X;
+  const y = TARGET_Y;
+  const rings = [40, 30, 20, 10];
+  const colors = ['#2a2a2a', '#3a3030', '#4a2a2a', '#8a3a3a'];
+  
+  ctx.save();
+  for (let i = 0; i < rings.length; i++) {
+    ctx.beginPath();
+    ctx.arc(x, y, rings[i], 0, Math.PI * 2);
+    ctx.fillStyle = colors[i];
+    ctx.fill();
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// --- SCROLL HORIZONTAL ---
+const container = document.getElementById('horizontal-container');
+
+gsap.to(container, {
+  x: () => -(container.scrollWidth - window.innerWidth),
+  ease: "none",
+  scrollTrigger: {
+    trigger: "body",
+    start: "top top",
+    end: () => `+=${container.scrollWidth - window.innerWidth}`,
+    scrub: 1,
+    pin: true,
+    anticipatePin: 1,
+    onUpdate: (self) => {
+      const p = self.progress;
+      // 6 panels : 0→1/6→2/6→3/6→4/6→5/6
+      const seg = 1 / 6;
+      
+      // Panel 0 (0 → 1/6) : lancement
+      state.launch = Math.min(1, p / seg);
+      
+      // Panel 1 (1/6 → 2/6) : vague coût
+      state.wave0 = Math.min(1, Math.max(0, (p - seg) / seg));
+      
+      // Panel 2 (2/6 → 3/6) : vague harcèlement
+      state.wave1 = Math.min(1, Math.max(0, (p - seg * 2) / seg));
+      
+      // Panel 3 (3/6 → 4/6) : vague image
+      state.wave2 = Math.min(1, Math.max(0, (p - seg * 3) / seg));
+      
+      // Panel 4 (4/6 → 5/6) : vague règles
+      state.wave3 = Math.min(1, Math.max(0, (p - seg * 4) / seg));
+    }
+  }
+});
+
+// Labels fade in
+const labels = [1,2,3,4];
+labels.forEach((n, i) => {
+  const el = document.getElementById(`label-${n}`);
+  gsap.to(el, {
+    opacity: 1,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: `#panel-${n}`,
+      containerAnimation: gsap.to(container, {}), // reuse
+      start: "left center",
+      toggleActions: "play none none reverse"
+    }
+  });
+});
+
+// Resize
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+render();
+</script>
+</body>
+</html>
+
