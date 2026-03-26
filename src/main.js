@@ -3,10 +3,10 @@ import javascriptLogo from './assets/javascript.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
-import toys from './toys.js'
-import sport from './sport.js'
-import workplace from './workplace.js'
-import feminicide from './feminicide.js'
+// import toys from './toys.js'
+// import sport from './sport.js'
+// import workplace from './workplace.js'
+// import feminicide from './feminicide.js'
 
 
 document.querySelector('#app').innerHTML = `
