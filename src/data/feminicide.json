@@ -1,0 +1,298 @@
+{
+  "id": "feminicide",
+  "title": "Féminicides en Suisse en 2025",
+  "description": "Chaque fleur fanée représente une femme tuée. Ces données sont partielles et évolutives.",
+  "source": "Observatoire des féminicides Suisse",
+  "year": 2025,
+  "totalVictims": 28,
+  "totalIncidents": 23,
+  "note": "Certains incidents comptent plusieurs victimes (mère et enfants, deux femmes tuées ensemble). Les âges marqués null n'étaient pas connus au moment de la publication.",
+
+  "victims": [
+    {
+      "id": "f01",
+      "date": "2025-01-14",
+      "month": 1,
+      "city": "Vouvry",
+      "canton": "Valais",
+      "age": 30,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f02",
+      "date": "2025-01-16",
+      "month": 1,
+      "city": "Bienne",
+      "canton": "Berne",
+      "age": 31,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f03",
+      "date": "2025-01-25",
+      "month": 1,
+      "city": "Berne",
+      "canton": "Berne",
+      "age": 44,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f04",
+      "date": "2025-01-26",
+      "month": 1,
+      "city": "Lodrino",
+      "canton": "Tessin",
+      "age": 21,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f05",
+      "date": "2025-02-07",
+      "month": 2,
+      "city": "Schönenwerd",
+      "canton": "Soleure",
+      "age": 40,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f06",
+      "date": "2025-02-10",
+      "month": 2,
+      "city": "Pratteln",
+      "canton": "Bâle-Campagne",
+      "age": 33,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f07",
+      "date": "2025-02-17",
+      "month": 2,
+      "city": "Bülach",
+      "canton": "Zürich",
+      "age": 68,
+      "ageKnown": true,
+      "note": "Deux femmes tuées lors du même incident"
+    },
+    {
+      "id": "f08",
+      "date": "2025-02-17",
+      "month": 2,
+      "city": "Bülach",
+      "canton": "Zürich",
+      "age": 49,
+      "ageKnown": true,
+      "note": "Deux femmes tuées lors du même incident"
+    },
+    {
+      "id": "f09",
+      "date": "2025-03-12",
+      "month": 3,
+      "city": "Obermumpf",
+      "canton": "Argovie",
+      "age": 55,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f10",
+      "date": "2025-03-22",
+      "month": 3,
+      "city": "Emmenbrücke",
+      "canton": "Lucerne",
+      "age": 40,
+      "ageKnown": true,
+      "note": "Mère et fille tuées lors du même incident"
+    },
+    {
+      "id": "f11",
+      "date": "2025-03-22",
+      "month": 3,
+      "city": "Emmenbrücke",
+      "canton": "Lucerne",
+      "age": null,
+      "ageKnown": false,
+      "note": "Fille — âge inconnu. Mère et fille tuées lors du même incident"
+    },
+    {
+      "id": "f12",
+      "date": "2025-03-24",
+      "month": 3,
+      "city": "Worb",
+      "canton": "Berne",
+      "age": 33,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f13",
+      "date": "2025-04-03",
+      "month": 4,
+      "city": "Münchwilen",
+      "canton": "Thurgovie",
+      "age": 47,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f14",
+      "date": "2025-04-10",
+      "month": 4,
+      "city": "Epagny",
+      "canton": "Fribourg",
+      "age": null,
+      "ageKnown": false,
+      "note": null
+    },
+    {
+      "id": "f15",
+      "date": "2025-04-27",
+      "month": 4,
+      "city": "Lyss",
+      "canton": "Berne",
+      "age": 70,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f16",
+      "date": "2025-06-14",
+      "month": 6,
+      "city": "Martigny-Croix",
+      "canton": "Valais",
+      "age": 50,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f17",
+      "date": "2025-06-17",
+      "month": 6,
+      "city": "Egerkingen",
+      "canton": "Soleure",
+      "age": null,
+      "ageKnown": false,
+      "note": "Deux femmes tuées lors du même incident"
+    },
+    {
+      "id": "f18",
+      "date": "2025-06-17",
+      "month": 6,
+      "city": "Egerkingen",
+      "canton": "Soleure",
+      "age": null,
+      "ageKnown": false,
+      "note": "Deux femmes tuées lors du même incident"
+    },
+    {
+      "id": "f19",
+      "date": "2025-07-05",
+      "month": 7,
+      "city": "Givisiez",
+      "canton": "Fribourg",
+      "age": 30,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f20",
+      "date": "2025-08-19",
+      "month": 8,
+      "city": "Corcelles",
+      "canton": "Neuchâtel",
+      "age": 47,
+      "ageKnown": true,
+      "note": "Mère et ses deux filles tuées lors du même incident"
+    },
+    {
+      "id": "f21",
+      "date": "2025-08-19",
+      "month": 8,
+      "city": "Corcelles",
+      "canton": "Neuchâtel",
+      "age": 10,
+      "ageKnown": true,
+      "note": "Fille — tuée avec sa mère et sa sœur"
+    },
+    {
+      "id": "f22",
+      "date": "2025-08-19",
+      "month": 8,
+      "city": "Corcelles",
+      "canton": "Neuchâtel",
+      "age": 3,
+      "ageKnown": true,
+      "note": "Fille — tuée avec sa mère et sa sœur"
+    },
+    {
+      "id": "f23",
+      "date": "2025-08-26",
+      "month": 8,
+      "city": "Neuhausen am Rheinfall",
+      "canton": "Schaffhouse",
+      "age": 47,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f24",
+      "date": "2025-08-27",
+      "month": 8,
+      "city": "Rorschach",
+      "canton": "Saint-Gall",
+      "age": 42,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f25",
+      "date": "2025-09-15",
+      "month": 9,
+      "city": "Wettswil am Albis",
+      "canton": "Zürich",
+      "age": 78,
+      "ageKnown": true,
+      "note": null
+    },
+    {
+      "id": "f26",
+      "date": "2025-11-08",
+      "month": 11,
+      "city": "Lausanne",
+      "canton": "Vaud",
+      "age": null,
+      "ageKnown": false,
+      "note": null
+    },
+    {
+      "id": "f27",
+      "date": "2025-11-09",
+      "month": 11,
+      "city": "Truttikon",
+      "canton": "Zürich",
+      "age": 65,
+      "ageKnown": true,
+      "note": null
+    }
+  ],
+
+  "byMonth": [
+    { "month": 1,  "label": "Janvier",   "count": 4 },
+    { "month": 2,  "label": "Février",   "count": 4 },
+    { "month": 3,  "label": "Mars",      "count": 4 },
+    { "month": 4,  "label": "Avril",     "count": 3 },
+    { "month": 5,  "label": "Mai",       "count": 0 },
+    { "month": 6,  "label": "Juin",      "count": 4 },
+    { "month": 7,  "label": "Juillet",   "count": 1 },
+    { "month": 8,  "label": "Août",      "count": 5 },
+    { "month": 9,  "label": "Septembre", "count": 1 },
+    { "month": 10, "label": "Octobre",   "count": 0 },
+    { "month": 11, "label": "Novembre",  "count": 2 },
+    { "month": 12, "label": "Décembre",  "count": 0 }
+  ]
+}
