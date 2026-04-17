@@ -1,0 +1,460 @@
+{
+   "etude": {
+     "titre": "Adolescentes & Sport : Le Grand Décrochage",
+     "publication": "Janvier 2026",
+     "commanditaire": "MGEN",
+     "realisateur": "Kantar",
+     "conception_graphique": "Publicis Sport",
+     "credits_photos": "Getty Images",
+     "redaction": ["Kantar", "MGEN", "Publicis Sport"]
+   },
+ 
+   "edito": {
+     "auteur": "Clotilde Truffaut",
+     "titre": "Administratrice nationale MGEN",
+     "message_cle": "L'abandon du sport par les adolescentes est un enjeu de société. MGEN soutient le sport féminin et porte la conviction que la pratique sportive est vectrice d'égalité. Cette étude est une première étape pour développer des solutions concrètes face aux freins identifiés."
+   },
+ 
+   "methodologie": {
+     "quantitative": {
+       "type": "Questionnaire en ligne",
+       "nb_interviews": 507,
+       "cible": "Jeunes filles de 13 à 20 ans ayant abandonné le sport",
+       "population_concernee_france": 2984000,
+       "source_population": "Estimations Kantar Media",
+       "quotas": "Aucun quota statistique appliqué pour les moins de 16 ans (absence de données INSEE précises)",
+       "autorisation_parentale": "Requise pour les 13-15 ans",
+       "echelle_reponse": {
+         "1": "Pas du tout d'accord",
+         "2": "Plutôt pas d'accord",
+         "3": "Ni d'accord ni pas d'accord",
+         "4": "Plutôt d'accord",
+         "5": "Tout à fait d'accord"
+       },
+       "question_filtre": "Pensez-vous avoir arrêté le sport malgré un intérêt pour ce sport, indépendamment de votre volonté ?",
+       "note_filtre": "Seules les répondantes ayant répondu OUI ont poursuivi le questionnaire"
+     },
+     "qualitative": {
+       "type": "Focus groupes en ligne",
+       "duree_par_session": "2h30",
+       "nb_focus_groupes": 9,
+       "territoire": "France entière, dont Martinique et Guyane (DROM même fuseau horaire)",
+       "calendrier": "Du 20 au 27 octobre 2025",
+       "groupes": [
+         {
+           "id": "G1",
+           "profil": "Filles de 13-16 ans",
+           "statut": "Pratiquantes",
+           "localisation": "Grande ville",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G2",
+           "profil": "Filles de 13-16 ans",
+           "statut": "Pratiquantes",
+           "localisation": "Petite ville ou ruralité",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G3",
+           "profil": "Jeunes femmes de 17-20 ans",
+           "statut": "Pratiquantes",
+           "localisation": "Grande ville",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G4",
+           "profil": "Jeunes femmes de 17-20 ans",
+           "statut": "Pratiquantes",
+           "localisation": "Petite ville ou ruralité",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G5",
+           "profil": "Filles de 13-16 ans",
+           "statut": "Abandonnistes",
+           "localisation": "Grande ville",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G6",
+           "profil": "Filles de 13-16 ans",
+           "statut": "Abandonnistes",
+           "localisation": "Petite ville ou ruralité",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G7",
+           "profil": "Jeunes femmes de 17-20 ans",
+           "statut": "Abandonnistes",
+           "localisation": "Grande ville",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G8",
+           "profil": "Jeunes femmes de 17-20 ans",
+           "statut": "Abandonnistes",
+           "localisation": "Petite ville ou ruralité",
+           "nb_participantes": 6
+         },
+         {
+           "id": "G9",
+           "profil": "Jeunes hommes de 17-20 ans",
+           "statut": "Pratiquants",
+           "localisation": null,
+           "nb_participantes": 6
+         }
+       ]
+     }
+   },
+ 
+   "enseignements_principaux": {
+     "abandon_malgre_interet": {
+       "question": "Pensez-vous avoir arrêté le sport malgré un intérêt pour ce sport, indépendamment de votre volonté ?",
+       "reponse_oui_pct": 45.2,
+       "reponse_non_pct": 54.8,
+       "base": 507,
+       "interpretation": "L'abandon n'est pas synonyme de désamour du sport mais le résultat de freins externes (organisation, argent, confiance, environnement). Fort potentiel de reprise identifié."
+     }
+   },
+ 
+   "questionnaire_complet": [
+     { "id": 1, "enonce": "Mes règles m'empêchent régulièrement de pratiquer une activité sportive." },
+     { "id": 2, "enonce": "Je ne me sens pas suffisamment informée ou équipée pour faire du sport pendant mes règles." },
+     { "id": 3, "enonce": "Les changements physiques liés à la puberté (poids, poitrine, croissance...) rendent le sport moins agréable pour moi." },
+     { "id": 4, "enonce": "Je me sens jugée par les autres quand je pratique une activité sportive." },
+     { "id": 5, "enonce": "Je manque de confiance en moi pour pratiquer du sport en groupe." },
+     { "id": 6, "enonce": "Je trouve que mon corps ne correspond pas à l'image idéale du sport véhiculée par les réseaux sociaux." },
+     { "id": 7, "enonce": "J'ai arrêté ou évité une activité sportive parce que je n'étais pas à l'aise avec mon apparence." },
+     { "id": 8, "enonce": "Je ne me sens pas toujours en sécurité dans certains lieux de pratique sportive (vestiaires, trajets, terrains)." },
+     { "id": 9, "enonce": "J'ai déjà vécu (subi) des comportements déplacés (moqueries, harcèlement, sexisme) dans le cadre sportif." },
+     { "id": 10, "enonce": "J'ai déjà été témoin de comportements déplacés (moqueries, harcèlement, sexisme) dans le cadre sportif." },
+     { "id": 11, "enonce": "Je me sens mal à l'aise avec les tenues imposées pour certaines activités sportives." },
+     { "id": 12, "enonce": "Les entraîneurs, les coachs, le personnel encadrant ne prennent pas toujours en compte les besoins et ressentis des filles." },
+     { "id": 13, "enonce": "J'aurais aimé être davantage encadrée par des entraîneurs, coachs féminins dans le sport." },
+     { "id": 14, "enonce": "Le coût de l'inscription, de l'équipement ou des déplacements m'empêche de pratiquer le sport que je souhaite." },
+     { "id": 15, "enonce": "Je préfère consacrer mon temps libre à d'autres activités (sorties, loisirs, réseaux sociaux...)." },
+     { "id": 16, "enonce": "Mon emploi du temps scolaire, universitaire ou professionnel ne me laisse pas assez de temps pour faire du sport." },
+     { "id": 17, "enonce": "Les horaires proposés pour les entraînements ou activités sportives ne correspondent pas à mes disponibilités." },
+     { "id": 18, "enonce": "Mes parents ou ma famille ne m'encouragent pas particulièrement à faire du sport." },
+     { "id": 19, "enonce": "Mes amis ne pratiquent pas de sport, ce qui ne m'encourage pas à en faire." },
+     { "id": 20, "enonce": "Les entraîneurs, les coachs, le personnel encadrant ne prennent pas toujours en compte les besoins et ressentis des filles." },
+     { "id": 21, "enonce": "Les sports proposés autour de chez moi ne possèdent pas de section féminine." },
+     { "id": 22, "enonce": "J'aurais aimé être davantage encadrée par des entraîneurs et des coachs féminins dans le sport." },
+     { "id": 23, "enonce": "Pensez-vous avoir arrêté le sport malgré un intérêt pour ce sport, indépendamment de votre volonté ?", "type": "filtre", "modalites": ["Oui", "Non"] }
+   ],
+ 
+   "freins_principaux": [
+     {
+       "id": 1,
+       "titre": "La non-prise en compte des spécificités du corps féminin",
+       "description": "Le corps féminin est cyclique et changeant. Le modèle sportif est pensé pour un corps constant. Les participantes constatent le décalage entre les variations du cycle menstruel et les attentes de performance constantes.",
+       "attentes": [
+         "Détabouiser le corps féminin dans le sport",
+         "Adapter les entraînements aux cycles menstruels",
+         "Former les coachs aux réalités physiologiques féminines"
+       ],
+       "temoignages": []
+     },
+     {
+       "id": 2,
+       "titre": "Un milieu sportif perçu comme non bienveillant",
+       "description": "Plus d'une jeune fille sur deux a été victime ou témoin de comportements déplacés dans le cadre sportif.",
+       "chiffres_cles": {
+         "temoins_pct": 55,
+         "victimes_pct": 42,
+         "malaise_tenues_pct": 49
+       },
+       "temoignages": [
+         {
+           "citation": "À Lyon, j'ai fait un essai, il y avait pas mal de personnes, c'était pas bienveillant, beaucoup se filmaient et ça m'a refroidie… c'était pour se montrer.",
+           "profil": "Abandonniste, 17-20 ans, petite ville - zone rurale"
+         },
+         {
+           "citation": "Au hand c'est des mini shorts… ils pourraient mettre un short plus long, ou avoir le choix entre short et survêtement.",
+           "profil": "Abandonniste, 17-20 ans, petite ville - zone rurale"
+         }
+       ]
+     },
+     {
+       "id": 3,
+       "titre": "La pression des réseaux sociaux et du groupe",
+       "description": "Les réseaux sociaux et la pression du groupe aggravent le malaise des adolescentes vis-à-vis de leur image corporelle et de leur pratique sportive.",
+       "temoignages": []
+     },
+     {
+       "id": 4,
+       "titre": "Les contraintes d'emploi du temps",
+       "description": "Le temps scolaire et les horaires d'entraînement incompatibles constituent un frein majeur.",
+       "temoignages": [
+         {
+           "citation": "J'ai mon bac en juin, les cours finissaient à 18h et les cours commençaient à 19h, j'étais fatiguée, pas le temps pour les devoirs…",
+           "profil": "Abandonniste, 17-20 ans, petite ville - zone rurale"
+         },
+         {
+           "citation": "C'est impossible. Le rythme est important à l'école, donc si en plus on a le sport, il faut faire un choix entre les deux.",
+           "profil": "Abandonniste, 17-20 ans, grande ville"
+         }
+       ]
+     },
+     {
+       "id": 5,
+       "titre": "L'injonction à la progression continue",
+       "description": "Le sport devient rapidement une activité de rendement avec des règles implicites : assiduité obligatoire, compétition précoce, niveau difficile à rattraper en cas d'absence.",
+       "mecanisme": {
+         "etapes": [
+           "Baisse du plaisir et du sens",
+           "Peur de stagner ou de ne pas évoluer",
+           "Perte de confiance en soi",
+           "Fatigue mentale",
+           "Culpabilité, soulagement ou sentiment d'échec",
+           "Abandon"
+         ]
+       },
+       "metaphore": "Le sport ressemble à une gare avec deux trains : celui de la compétition (rapide mais pressurisant) et celui du loisir (tranquille mais monotone)."
+     }
+   ],
+ 
+   "resultats_detailles_par_question": [
+     {
+       "question_id": 1,
+       "enonce": "Mes règles m'empêchent régulièrement de pratiquer une activité sportive.",
+       "base": 507,
+       "ventilation_sociodemographique": {
+         "education": [
+           { "groupe": "Enseignement", "accord_pct": 57.6, "pas_accord_pct": 24.1, "neutre_pct": 14 },
+           { "groupe": "Enseignement secondaire", "accord_pct": 46, "pas_accord_pct": 27.4, "neutre_pct": 22.6 }
+         ],
+         "region": [
+           { "groupe": "Île-de-France", "accord_pct": 67.2, "pas_accord_pct": 16.8, "neutre_pct": 15.2 },
+           { "groupe": "Nord-Ouest", "accord_pct": 52.8, "pas_accord_pct": 21.7, "neutre_pct": 22.6 },
+           { "groupe": "Nord-Est", "accord_pct": 57.8, "pas_accord_pct": 20.2, "neutre_pct": 14.7 },
+           { "groupe": "Sud-Ouest", "accord_pct": 37, "pas_accord_pct": 32.6, "neutre_pct": 21.7 },
+           { "groupe": "Sud-Est", "accord_pct": 47.9, "pas_accord_pct": 33.1, "neutre_pct": 12.4 }
+         ],
+         "taille_agglomeration": [
+           { "groupe": "Rural", "accord_pct": 50.6, "pas_accord_pct": 24.7, "neutre_pct": 16.5 },
+           { "groupe": "Agglos Paris", "accord_pct": 67.2, "pas_accord_pct": 16.8, "neutre_pct": 15.2 },
+           { "groupe": "Agglos région", "accord_pct": 50.8, "pas_accord_pct": 26.2, "neutre_pct": 17 }
+         ],
+         "csp_foyer": [
+           { "groupe": "CSP+", "accord_pct": 56.6, "pas_accord_pct": 24.7, "neutre_pct": 13.9 },
+           { "groupe": "CSP-", "accord_pct": 56.4, "pas_accord_pct": 26.4, "neutre_pct": 14.2 }
+         ]
+       }
+     },
+     {
+       "question_id": 2,
+       "enonce": "Je ne me sens pas suffisamment informée ou équipée pour faire du sport pendant mes règles.",
+       "base": 507,
+       "ventilation_sociodemographique": {
+         "education": [
+           { "groupe": "Enseignement", "accord_pct": 54.6, "pas_accord_pct": 25.6, "neutre_pct": 15.6 },
+           { "groupe": "Inactive", "accord_pct": 57.1, "pas_accord_pct": 19.1, "neutre_pct": 19.1 }
+         ],
+         "region": [
+           { "groupe": "Île-de-France", "accord_pct": 59.2, "pas_accord_pct": 25.6, "neutre_pct": 12 },
+           { "groupe": "Nord-Ouest", "accord_pct": 50.9, "pas_accord_pct": 20.8, "neutre_pct": 23.6 },
+           { "groupe": "Nord-Est", "accord_pct": 56.9, "pas_accord_pct": 25.7, "neutre_pct": 13.8 },
+           { "groupe": "Sud-Ouest", "accord_pct": 43.5, "pas_accord_pct": 32.6, "neutre_pct": 21.7 },
+           { "groupe": "Sud-Est", "accord_pct": 48.8, "pas_accord_pct": 29.8, "neutre_pct": 11.6 }
+         ],
+         "taille_agglomeration": [
+           { "groupe": "Rural", "accord_pct": 48.2, "pas_accord_pct": 27.1, "neutre_pct": 18.8 },
+           { "groupe": "Agglomération parisienne", "accord_pct": 58, "pas_accord_pct": 26.1, "neutre_pct": 12.6 },
+           { "groupe": "Agglos Paris", "accord_pct": 59.2, "pas_accord_pct": 25.6, "neutre_pct": 12 },
+           { "groupe": "Agglos région", "accord_pct": 51, "pas_accord_pct": 26.4, "neutre_pct": 16.8 }
+         ],
+         "csp_foyer": [
+           { "groupe": "CSP+", "accord_pct": 51.2, "pas_accord_pct": 28.9, "neutre_pct": 13.2 }
+         ]
+       }
+     },
+     {
+       "question_id": 11,
+       "enonce": "Je me sens mal à l'aise avec les tenues imposées pour certaines activités sportives.",
+       "base": 507,
+       "ventilation_sociodemographique": {
+         "education": [
+           { "groupe": "Enseignement", "accord_pct": 47.9, "pas_accord_pct": 35.4, "neutre_pct": 16.8 },
+           { "groupe": "Inactive", "accord_pct": 47.6, "pas_accord_pct": 38.1, "neutre_pct": 14.3 }
+         ],
+         "region": [
+           { "groupe": "Île-de-France", "accord_pct": 56, "pas_accord_pct": 28.8, "neutre_pct": 15.2 },
+           { "groupe": "Nord-Ouest", "accord_pct": 41.5, "pas_accord_pct": 32.1, "neutre_pct": 26.4 },
+           { "groupe": "Nord-Est", "accord_pct": 57.8, "pas_accord_pct": 28.4, "neutre_pct": 13.8 },
+           { "groupe": "Sud-Ouest", "accord_pct": 37, "pas_accord_pct": 45.6, "neutre_pct": 17.4 },
+           { "groupe": "Sud-Est", "accord_pct": 46.3, "pas_accord_pct": 37.2, "neutre_pct": 16.5 }
+         ],
+         "taille_agglomeration": [
+           { "groupe": "Rural", "accord_pct": 44.7, "pas_accord_pct": 32.9, "neutre_pct": 22.4 },
+           { "groupe": "Agglomération parisienne", "accord_pct": 56.3, "pas_accord_pct": 28.6, "neutre_pct": 15.1 },
+           { "groupe": "Agglos Paris", "accord_pct": 56, "pas_accord_pct": 28.8, "neutre_pct": 15.2 },
+           { "groupe": "Agglos région", "accord_pct": 47.1, "pas_accord_pct": 34.3, "neutre_pct": 18.6 }
+         ],
+         "csp_foyer": [
+           { "groupe": "CSP+", "accord_pct": 44, "pas_accord_pct": 40.4, "neutre_pct": 15.7 }
+         ]
+       }
+     },
+     {
+       "question_id": 13,
+       "enonce": "J'aurais aimé être davantage encadrée par des entraîneurs, coachs féminins dans le sport.",
+       "base": 507,
+       "ventilation_sociodemographique": {
+         "education": [
+           { "groupe": "Enseignement", "accord_pct": 57.6, "pas_accord_pct": 17.1, "neutre_pct": 25.3 },
+           { "groupe": "Inactive", "accord_pct": 38.1, "pas_accord_pct": 14.3, "neutre_pct": 47.6 }
+         ],
+         "region": [
+           { "groupe": "Île-de-France", "accord_pct": 69.6, "pas_accord_pct": 11.2, "neutre_pct": 19.2 },
+           { "groupe": "Nord-Ouest", "accord_pct": 52.8, "pas_accord_pct": 18.9, "neutre_pct": 28.3 },
+           { "groupe": "Nord-Est", "accord_pct": 65.1, "pas_accord_pct": 11, "neutre_pct": 23.8 },
+           { "groupe": "Sud-Ouest", "accord_pct": 54.4, "pas_accord_pct": 19.6, "neutre_pct": 26.1 },
+           { "groupe": "Sud-Est", "accord_pct": 56.2, "pas_accord_pct": 21.5, "neutre_pct": 22.3 }
+         ],
+         "taille_agglomeration": [
+           { "groupe": "Rural", "accord_pct": 54.1, "pas_accord_pct": 14.1, "neutre_pct": 31.8 },
+           { "groupe": "Agglomération parisienne", "accord_pct": 68.9, "pas_accord_pct": 11.8, "neutre_pct": 19.3 },
+           { "groupe": "Agglos Paris", "accord_pct": 69.6, "pas_accord_pct": 11.2, "neutre_pct": 19.2 },
+           { "groupe": "Agglos région", "accord_pct": 57.6, "pas_accord_pct": 17.5, "neutre_pct": 24.9 }
+         ],
+         "csp_foyer": [
+           { "groupe": "CSP+", "accord_pct": 65.1, "pas_accord_pct": 13.2, "neutre_pct": 21.7 }
+         ]
+       }
+     },
+     {
+       "question_id": 14,
+       "enonce": "Le coût de l'inscription, de l'équipement ou des déplacements m'empêche de pratiquer le sport que je souhaite.",
+       "base": 507,
+       "ventilation_sociodemographique": {
+         "education": [
+           { "groupe": "Enseignement", "accord_pct": 56.7, "pas_accord_pct": 27.4, "neutre_pct": 15.8 },
+           { "groupe": "Inactive", "accord_pct": 19.1, "pas_accord_pct": 38.1, "neutre_pct": 42.9 }
+         ],
+         "region": [
+           { "groupe": "Île-de-France", "accord_pct": 62.4, "pas_accord_pct": 23.2, "neutre_pct": 14.4 },
+           { "groupe": "Nord-Ouest", "accord_pct": 50, "pas_accord_pct": 31.1, "neutre_pct": 18.9 },
+           { "groupe": "Nord-Est", "accord_pct": 66.1, "pas_accord_pct": 14.7, "neutre_pct": 19.3 },
+           { "groupe": "Sud-Ouest", "accord_pct": 50, "pas_accord_pct": 28.3, "neutre_pct": 21.7 },
+           { "groupe": "Sud-Est", "accord_pct": 52.1, "pas_accord_pct": 31.4, "neutre_pct": 16.5 }
+         ],
+         "taille_agglomeration": [
+           { "groupe": "Rural", "accord_pct": 55.3, "pas_accord_pct": 23.5, "neutre_pct": 21.2 },
+           { "groupe": "Agglomération parisienne", "accord_pct": 62.2, "pas_accord_pct": 24.4, "neutre_pct": 13.5 },
+           { "groupe": "Agglos Paris", "accord_pct": 62.4, "pas_accord_pct": 23.2, "neutre_pct": 14.4 },
+           { "groupe": "Agglos région", "accord_pct": 55.2, "pas_accord_pct": 26.2, "neutre_pct": 18.6 }
+         ],
+         "csp_foyer": [
+           { "groupe": "CSP+", "accord_pct": 56.6, "pas_accord_pct": 28.9, "neutre_pct": 14.5 }
+         ]
+       }
+     },
+     {
+       "question_id": 15,
+       "enonce": "Je préfère consacrer mon temps libre à d'autres activités (sorties, loisirs, réseaux sociaux...).",
+       "base": 507,
+       "ventilation_sociodemographique": {
+         "education": [
+           { "groupe": "Enseignement", "accord_pct": 53.7, "pas_accord_pct": 22.9, "neutre_pct": 23.5 },
+           { "groupe": "Inactive", "accord_pct": 61.9, "pas_accord_pct": 14.3, "neutre_pct": 23.8 }
+         ],
+         "region": [
+           { "groupe": "Île-de-France", "accord_pct": 64, "pas_accord_pct": 16, "neutre_pct": 20 },
+           { "groupe": "Nord-Ouest", "accord_pct": 44.3, "pas_accord_pct": 19.8, "neutre_pct": 35.9 },
+           { "groupe": "Nord-Est", "accord_pct": 60.6, "pas_accord_pct": 14.7, "neutre_pct": 24.8 },
+           { "groupe": "Sud-Ouest", "accord_pct": 47.8, "pas_accord_pct": 21.7, "neutre_pct": 30.4 },
+           { "groupe": "Sud-Est", "accord_pct": 42.1, "pas_accord_pct": 30.6, "neutre_pct": 27.3 }
+         ],
+         "taille_agglomeration": [
+           { "groupe": "Rural", "accord_pct": 49.4, "pas_accord_pct": 17.6, "neutre_pct": 32.9 },
+           { "groupe": "Agglomération parisienne", "accord_pct": 64.7, "pas_accord_pct": 15.1, "neutre_pct": 20.2 },
+           { "groupe": "Agglos Paris", "accord_pct": 64, "pas_accord_pct": 16, "neutre_pct": 20 },
+           { "groupe": "Agglos région", "accord_pct": 48.7, "pas_accord_pct": 22, "neutre_pct": 29.3 }
+         ],
+         "csp_foyer": [
+           { "groupe": "CSP+", "accord_pct": 45.8, "pas_accord_pct": 25.9, "neutre_pct": 28.3 }
+         ]
+       }
+     }
+   ],
+ 
+   "recommandations": [
+     {
+       "theme": "Normaliser le cycle menstruel dans le sport",
+       "sous_titre": "Une opportunité pour détabouiser le sujet",
+       "actions": [
+         "Considérer le cycle menstruel comme une réalité sportive : intégrer les impacts physiologiques dans l'entraînement (fatigue, crampes)",
+         "Profiter de la journée internationale des droits des femmes pour intégrer des initiatives dans le programme sportif",
+         "Former des coachs à l'écoute sur les sujets féminins sans tabou (hormones, bien-être, nutrition, sommeil)",
+         "Mettre en place des moments de discussion confidentiels entre jeunes filles et coachs",
+         "Accorder plus de souplesse dans le choix des tenues (combinaisons, shorts plus amples, assouplir le justaucorps)",
+         "Assouplir les programmes : micro-séances de 30-45 minutes, pauses supplémentaires, activités douces (stretching, yoga)"
+       ]
+     },
+     {
+       "theme": "Créer des environnements bienveillants",
+       "sous_titre": "S'assurer que les jeunes filles se sentent à l'aise",
+       "actions": [
+         "Communiquer que la participation compte davantage que la performance",
+         "Mettre en avant les valeurs : respect, entraide, encouragement portés par tous les acteurs du club",
+         "Repenser la pédagogie : former les entraîneurs via les CREPS à des pratiques inclusives et positives",
+         "Garantir l'égalité de traitement : règles claires contre le sexisme",
+         "Introduire un système de parrainage (binômes de même niveau pour guider les nouvelles arrivantes)",
+         "Proposer l'option 'amener une amie' à des cours",
+         "Créer une ambiance détendue : musique et éclairage accueillants"
+       ]
+     },
+     {
+       "theme": "Faire du sport un vecteur de bonne santé mentale",
+       "sous_titre": "Mettre l'accent sur le bien-être psychologique",
+       "actions": [
+         "Valoriser le lien entre sport et équilibre psychologique, notamment en période de stress ou d'examen",
+         "Intégrer la santé mentale dans la formation des entraîneurs via les CREPS",
+         "Inclure la santé mentale dans les campagnes de communication",
+         "Promouvoir les sports axés sur le bien-être (pilates, yoga) accessibles aux moins de 18 ans",
+         "Intégrer des ateliers sports & bien-être (respiration, stretching, méditation)",
+         "Organiser des entretiens avec des athlètes féminines professionnelles"
+       ]
+     },
+     {
+       "theme": "Permettre la flexibilité",
+       "sous_titre": "Faciliter la participation plutôt que créer des barrières",
+       "actions": [
+         "Proposer des groupes par niveau plutôt que par âge",
+         "Proposer une pratique sans compétition axée sur le plaisir et le bien-être",
+         "Introduire des formats courts (45 min à 1h), adaptés en intensité",
+         "Proposer des abonnements hybrides (présentiel + digital)",
+         "Offrir des options à la carte sans obligations",
+         "Assouplir l'engagement annuel (inscription trimestrielle, à la séance)",
+         "Proposer des cours en ligne en période d'examens",
+         "Organiser des solutions de transport (navettes, covoiturage) notamment en zone rurale"
+       ]
+     },
+     {
+       "theme": "Faciliter la découverte",
+       "sous_titre": "Encourager les jeunes filles à tester différents sports",
+       "actions": [
+         "Introduire la mixité par étape pour éviter toute approche dogmatique",
+         "Maintenir des groupes 100% filles en option",
+         "Introduire des formats ludiques : mini-jeux mixtes sans pression",
+         "Mettre en avant le côté ludique plutôt que la performance",
+         "Communiquer sur les valeurs d'égalité dans les clubs (règles contre le sexisme, respect, fair-play)"
+       ]
+     },
+     {
+       "theme": "Valoriser les athlètes féminines",
+       "sous_titre": "Faire rayonner le sport féminin au quotidien",
+       "actions": [
+         "Mettre en avant des modèles inspirants dans les outils de communication (newsletters, affichage)",
+         "Renforcer la présence sur les réseaux sociaux (stories, reels, interviews de parcours féminins)",
+         "Lancer des chaînes YouTube (tutoriels, vlogs, témoignages)",
+         "Former des collaborations avec des créateurs et influencers (mini-séries, documentaires)",
+         "Développer des campagnes de sponsoring inclusifs valorisant la diversité",
+         "Promouvoir des partenariats avec des clubs féminins (mise en lumière mensuelle)"
+       ]
+     }
+   ]
+ }
+ 
