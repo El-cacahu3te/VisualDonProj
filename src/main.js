@@ -1,15 +1,11 @@
 import './style.css'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.js'
-// import toys from './toys.js'
+import toys from './data/toys.json'
 // import sport from './sport.js'
 // import workplace from './workplace.js'
 // import feminicide from './feminicide.js'
 
 
-document.querySelector('#app').innerHTML = `
+/* document.querySelector('#app').innerHTML = `
 <section id="center">
   <div class="hero">
     <img src="${heroImg}" class="base" width="170" height="179">
@@ -62,4 +58,4 @@ document.querySelector('#app').innerHTML = `
 <section id="spacer"></section>
 `
 
-setupCounter(document.querySelector('#counter'))
+setupCounter(document.querySelector('#counter')) */
