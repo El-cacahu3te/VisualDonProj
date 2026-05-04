@@ -20,7 +20,7 @@
 
   /* Fontes */
   --sans: 'Quicksand', system-ui, sans-serif;
-  --heading: 'Fleur De Leah', cursive;
+  --heading: 'Fleur De Leah', serif;
   --mono: ui-monospace, Consolas, monospace;
 
   /* Typographie */
@@ -295,7 +295,18 @@ code {
   padding-bottom: 0;
 }
 
+.sport-scene {
+  height: 500vh;
+  position: relative;
+}
 
+.sport-sticky-scene {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
 .sport-canvas {
   position: absolute;
@@ -313,6 +324,72 @@ code {
       }
 
 /* ── FOOTER ── */
+.sport-title {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.sport-title-main {
+  display: block;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #51687D;
+  font-family: var(--heading);
+  letter-spacing: 0.02em;
+}
+
+.sport-title-sub {
+  display: block;
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  color: #5D816E;
+  margin-top: 0.3rem;
+}
+
+.sport-title-sub strong {
+  color: #51687D;
+  font-weight: 700;
+}
+
+.sport-ratio {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 6.25rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.88rem;
+  font-family: var(--sans);
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sport-ratio-hit {
+  color: #5D816E;
+  font-weight: 600;
+}
+
+.sport-ratio-miss {
+  color: #EDAFB8;
+  font-weight: 600;
+}
+
+.sport-ratio-sep {
+  color: #A9BCAA;
+}
+
+
+/* =============================================
+   FOOTER
+============================================= */
 footer {
   max-width: 40rem;
   margin-inline: auto;
@@ -357,4 +434,5 @@ footer {
     padding: 6vh 1.25rem;
   }
 }
+
 
