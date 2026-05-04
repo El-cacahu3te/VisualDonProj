@@ -12,5 +12,9 @@ initSportChart();
  */
 
 import initToys from './section/toys.js'
- 
-initToys()
+import initWorkplace from './section/workplace.js'
+import initFeminicide from './section/feminicide.js'
+
+try { initToys() }      catch(e) { console.error('toys:', e) }
+try { initWorkplace() } catch(e) { console.error('workplace:', e) }
+try { initFeminicide() } catch(e) { console.error('feminicide:', e) }
