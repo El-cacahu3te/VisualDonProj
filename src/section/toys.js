@@ -6,7 +6,7 @@
  */
 
 // Importation des données depuis le fichier externe
-import { DATA } from './toys.js'; 
+import DATA from '../data/toys.json';
 
 export default function initToys() {
 
