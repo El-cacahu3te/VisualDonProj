@@ -20,7 +20,7 @@
 
   /* Fontes */
   --sans: 'Quicksand', system-ui, sans-serif;
-  --heading: 'Fleur De Leah', cursive;
+  --heading: 'Fleur De Leah', serif;
   --mono: ui-monospace, Consolas, monospace;
 
   /* Typographie */
@@ -295,7 +295,18 @@ code {
   padding-bottom: 0;
 }
 
+.sport-scene {
+  height: 500vh;
+  position: relative;
+}
 
+.sport-sticky-scene {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
 .sport-canvas {
   position: absolute;
@@ -365,38 +376,7 @@ code {
 .sport-ratio-sep {
   color: #A9BCAA;
 }
-/* Sport Visualization */
-.sport-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
 
-.sport-canvas svg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Flèches */
-.sport-arrow {
-  position: absolute;
-  width: 60px;
-  height: 20px;
-  z-index: 5;
-}
-
-/* Étiquettes */
-.sport-label {
-  position: absolute;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 4px;
-  z-index: 10;
-}
 
 /* =============================================
    FOOTER
@@ -445,4 +425,5 @@ footer {
     padding: 6vh 1.25rem;
   }
 }
+
 
