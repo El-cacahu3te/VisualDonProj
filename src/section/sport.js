@@ -148,10 +148,10 @@ export async function initSportChart() {
                const maxX = ARCHER_X + 30 + (TARGET_X - ARCHER_X - 30) * (0.45 + this.index * 0.04);
                const cx = p.lerp(ARCHER_X + 30, maxX, t);
                const arcH = -state.H * 0.28;
-               const cy = p.lerp(ARCHER_Y - 60, GROUND_Y, t) + arcH * 4 * t * (1 - t);
-               return { x: cx, y: Math.min(cy, GROUND_Y - 10), t, planted: t >= 0.98, angle: this.fallAngle(t) };
+               const cy = p.lerp(ARCHER_Y - 60, GROUND_Y - 100, t) + arcH * 4 * t * (1 - t);
+               return { x: cx, y: Math.min(cy, GROUND_Y - 60), t, planted: t >= 0.98, angle: this.fallAngle(t) };
             }
-         }
+         } 
 
          hitAngle(t) {
             const dt = 0.01;
@@ -188,7 +188,8 @@ export async function initSportChart() {
                p.rotate(pos.angle);
             }
 
-            p.image(arrowSVG, -15, -5, 30, 10);
+            p.image(arrowSVG, -30, -10, 60, 20); 
+
             p.pop();
 
             if (pos.planted && this.frein && pos.t >= 1) {
@@ -213,7 +214,7 @@ export async function initSportChart() {
          ARCHER_X = 120;
          ARCHER_Y = state.H - 80;
          TARGET_X = state.W - 200;
-         TARGET_Y = state.H * 0.45;
+         TARGET_Y = state.H - 80; // même valeur que ARCHER_Y
          GROUND_Y = state.H - 20;
 
          arrows = ARROWS_DEF.map((def, i) => new Arrow(def, i, ARROWS_DEF.length));
