@@ -17,12 +17,18 @@ const questions = data.resultats_detailles_par_question;
          .append('svg')
          .attr('width', width)
          .attr('height', height);
-      // Préparer les données : on prend les 6 questions disponibles
-      const dataset = questions.map(q => ({
-         label: q.enonce.substring(0, 50) + '...', // texte court
-         accord: q.ventilation_sociodemographique.region
-            .find(r => r.groupe === 'Île-de-France')?.accord_pct || 0
-      }));
+      // Préparer les données : ne garder que les questions avec une ventilation régionale
+      const dataset = questions
+         .map(q => {
+            const accord = q.ventilation_sociodemographique?.region
+               ?.find(r => r.groupe === 'Île-de-France')
+               ?.accord_pct;
+            return {
+               label: q.enonce.substring(0, 50) + '...', // texte court
+               accord: typeof accord === 'number' ? accord : null
+            };
+         })
+         .filter(d => d.accord !== null);
       // Échelles D3
       const x = d3.scaleLinear().domain([0, 100]).range([margin.left, width -
          margin.right]);
