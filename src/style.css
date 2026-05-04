@@ -315,6 +315,15 @@ code {
   height: 100%;
 }
 
+.fm-flower svg { display:block; overflow:visible; }
+
+      .fm-flower .fleur-svg {
+        width: 120px;
+        height: auto;
+        display: block;
+      }
+
+/* ── FOOTER ── */
 .sport-title {
   position: absolute;
   top: 2rem;
