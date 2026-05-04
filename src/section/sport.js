@@ -116,20 +116,13 @@ export async function initSportChart() {
       });
    }
     
-
    // ── p5 sketch ─────────────────────────────────────────────
    new p5((p) => {
-      let archerSVG, targetSVG, arrowSVG;
+      console.log('p5 initialized');
       let ARCHER_X, ARCHER_Y;
       let TARGET_X, TARGET_Y;
       let GROUND_Y;
       let arrows = [];
-
-      p.preload = () => {
-         archerSVG = p.loadImage('/archere.svg');
-         targetSVG = p.loadImage('/cible.svg');
-         arrowSVG = p.loadImage('/fleche.svg');
-      };
 
       class Arrow {
          constructor(def, index, total) {
@@ -208,10 +201,14 @@ export async function initSportChart() {
          }
       }
 
-      p.setup = () => {
+      p.setup = async () => {
+         console.log('p5 setup');
          state.W = canvasHolder.offsetWidth;
          state.H = canvasHolder.offsetHeight;
          p.createCanvas(state.W, state.H).parent(canvasHolder);
+         archerSVG = await p.loadImage('/archere.png');
+         targetSVG = await p.loadImage('/cible.png');
+         arrowSVG =  await p.loadImage('/fleche.png');
        
          ARCHER_X = 120;
          ARCHER_Y = state.H - 80;
