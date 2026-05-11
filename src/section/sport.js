@@ -23,18 +23,19 @@ export async function initSportChart() {
    canvasHolder.className = 'sport-canvas';
    sticky.appendChild(canvasHolder);
 
-   // Titre centré en haut
-   const titleEl = document.createElement('div');
-   titleEl.className = 'sport-title';
-   titleEl.innerHTML = `
-    <span class="sport-title-main">Les causes du décrochage</span>
-    <span class="sport-title-sub">
-      <strong>2 984 000</strong> jeunes filles concernées en France
-    </span>
+   const textPanel = document.createElement('div');
+   textPanel.className = 'sport-panel';
+   textPanel.innerHTML = `
+    <div class="sport-eyebrow">Scène 2 · Pratiques sportives</div>
+    <div class="sport-headline">Quand les freins empêchent les filles de continuer.</div>
+    <div class="sport-body">
+      45,2% des jeunes filles abandonnent le sport en France.<br><br>
+      Les règles, le regard des autres et les horaires incompatibles rendent la pratique moins durable.
+    </div>
+    <div class="sport-note">Chaque flèche représente un obstacle : certaines atteignent la cible, d'autres tombent avant.</div>
   `;
-   sticky.appendChild(titleEl);
+   sticky.appendChild(textPanel);
 
-   // Ratio pill en haut à droite
    const ratioPill = document.createElement('div');
    ratioPill.className = 'sport-ratio';
    ratioPill.innerHTML = `
@@ -43,6 +44,9 @@ export async function initSportChart() {
     <span class="sport-ratio-miss">45,2% abandonnent</span>
   `;
    sticky.appendChild(ratioPill);
+
+   // Animation du panneau texte
+   setTimeout(() => textPanel.classList.add('visible'), 500);
 
    // ── Données ────────────────────────────────────────────────
    const FREINS = [
@@ -132,8 +136,8 @@ export async function initSportChart() {
             this.freinIdx = def.freinIdx ?? -1;
 
             //espace entre groupes = 90px, entre flèches du même groupe = 10px
-            const GROUP_SPACING = 150;
-            const INGROUP_OFFSET = 10;
+            const GROUP_SPACING = 200;
+            const INGROUP_OFFSET = 12;
 
             this.landOffsetX = this.freinIdx >= 0
                ? this.freinIdx * GROUP_SPACING + this.gIdx * INGROUP_OFFSET
@@ -146,7 +150,7 @@ export async function initSportChart() {
             const t = p.constrain((globalProgress - delay) / 0.4, 0, 1);
 
             const startX = ARCHER_X + 30;
-            const startY = ARCHER_Y -100 //hauteur de tir de l'archère
+            const startY = ARCHER_Y -150 //hauteur de tir de l'archère
             if (this.hits) {
                // Ligne droite vers la cible, légèrement décalée en Y pour éviter superposition
                const endY = TARGET_Y - 120 + this.gIdx * 4;//même hauteur de tir, avec petit décalage vertical selon l'ordre d'arrivée sur la cible
@@ -201,8 +205,8 @@ export async function initSportChart() {
                   p.fill(this.frein.color);
                   p.textAlign(p.CENTER, p.TOP);
                   p.textStyle(p.BOLD);
-                  p.textSize(15);
-                  p.text(`${this.frein.short}\n${this.frein.pct}%`, pos.x, pos.y + 30);
+                  p.textSize(14);
+                  p.text(`${this.frein.short}\n${this.frein.pct}%`, pos.x, pos.y + 50);
                }
             }
          }

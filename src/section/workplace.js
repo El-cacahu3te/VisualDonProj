@@ -134,7 +134,6 @@ export default function initWorkplace() {
         position: relative;
         width: 100%;
         height: 700vh;
-        background: #f2ece0;
         font-family: 'Quicksand', sans-serif;
       }
       .wk-sticky {
@@ -148,7 +147,6 @@ export default function initWorkplace() {
         position: absolute;
         top: 0; left: 0;
         width: 40%; height: 100%;
-        background: #f2ece0;
         z-index: 100;
         display: flex; flex-direction: column;
         justify-content: center;
@@ -157,15 +155,9 @@ export default function initWorkplace() {
       }
       .wk-text::after {
         content: '';
-<<<<<<< HEAD
         position: absolute;
         top: 0; right: -60px;
         width: 60px; height: 100%;
-=======
-        position: absolute; top:0; right:-60px;
-        width:60px; height:100%;
-        background: linear-gradient(to right, #f2ece0, transparent);
->>>>>>> 51239c337c6946e1b13214f173cebc0940f22b46
         pointer-events: none;
       }
       .wk-eyebrow {

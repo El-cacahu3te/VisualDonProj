@@ -35,7 +35,6 @@ export default function initToys() {
         position: relative;
         width: 100%;
         height: 750vh;
-        background: #f5f0e8;
         font-family: 'Lora', Georgia, serif;
       }
 
@@ -45,54 +44,6 @@ export default function initToys() {
         width: 100%;
         height: 100vh;
         overflow: hidden;
-<<<<<<< HEAD
-        display: flex;
-        flex-direction: column;
-      }
-
-      .toys-garden {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        height: 15%;
-        z-index: 3;
-        overflow: hidden;
-      }
-
-      .toys-garden-soil {
-        position: absolute;
-        inset: 0;
-      }
-
-      .toys-garden-rows {
-        position: absolute;
-        inset: 0;
-        background:
-          repeating-linear-gradient(
-            to top,
-            rgba(80,50,20,0.18) 0px, rgba(80,50,20,0.18) 1px,
-            transparent 1px, transparent 18px
-          );
-      }
-
-      .toys-garden-grass {
-        position: absolute;
-        top: -8px; left: 0; right: 0;
-        height: 16px;
-        overflow: hidden;
-      }
-
-      .toys-garden-light {
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 3px;
-        );
-      }
-
-      .toys-garden::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 1px;
-=======
->>>>>>> 51239c337c6946e1b13214f173cebc0940f22b46
       }
 
       /* ── Canvas pleine page ── */
@@ -107,41 +58,18 @@ export default function initToys() {
          Les pousses évitent cette zone.              */
       .toys-panel {
         position: absolute;
-<<<<<<< HEAD
-        font-size: clamp(0.6rem, 0.85vw, 0.78rem);
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: #8a7a60;
-        pointer-events: none;
-        transform: translateX(-50%);
-        white-space: nowrap;
-        transition: opacity 0.6s ease;
-      }
-
-      .toys-text-panel {
-        position: absolute;
-        top: 0; left: 0;
-        width: min(380px, 38%);
-        height: 82%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 2.5rem 2.5rem 2.5rem 3rem;
-        z-index: 20;
-=======
         bottom: 0;
         left: 0;
         width: 38%;
         z-index: 30;
         padding: 2rem 2.5rem 2.5rem 3rem;
-        background: linear-gradient(
-          to top,
-          rgba(245,240,232,1)   0%,
-          rgba(245,240,232,1)  72%,
-          rgba(245,240,232,0.7) 88%,
-          rgba(245,240,232,0)  100%
-        );
->>>>>>> 51239c337c6946e1b13214f173cebc0940f22b46
+        // background: linear-gradient( //caré dégradé un peut fancy 
+        //   to top,
+        //   rgba(245,240,232,1)   0%,
+        //   rgba(245,240,232,1)  72%,
+        //   rgba(245,240,232,0.7) 88%,
+        //   rgba(245,240,232,0)  100%
+        // );
         pointer-events: none;
       }
 
@@ -214,7 +142,7 @@ export default function initToys() {
         bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
-        background: #2a2018;
+        background: #2a2018; //ombres des petites feuilles
         color: #f5f0e8;
         font-size: 0.62rem;
         line-height: 1.5;
