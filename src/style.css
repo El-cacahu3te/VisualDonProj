@@ -9,13 +9,13 @@
   /* Couleurs */
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: #F7E1D7;
   --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  --code-bg: #f9ece8;
+  --accent: #EDAFB8;
+  --accent-bg: rgba(237, 175, 184, 0.12);
+  --accent-border: rgba(237, 175, 184, 0.35);
+  --social-bg: rgba(255, 245, 242, 0.65);
   --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   /* Fontes */
@@ -64,7 +64,7 @@ html {
   line-height: var(--line-height-base);
   letter-spacing: var(--letter-spacing-base);
   color: var(--text);
-  background: var(--bg);
+  background: linear-gradient(180deg, #FFD9C4 0%, #F7E1D7 42%, #EDAFB8 100%);
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -338,7 +338,7 @@ code {
   display: block;
   font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 700;
-  color: #51687D;
+  color: #8F4D6E;
   font-family: var(--heading);
   letter-spacing: 0.02em;
 }
@@ -346,12 +346,12 @@ code {
 .sport-title-sub {
   display: block;
   font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  color: #5D816E;
+  color: #A15B74;
   margin-top: 0.3rem;
 }
 
 .sport-title-sub strong {
-  color: #51687D;
+  color: #7F405C;
   font-weight: 700;
 }
 

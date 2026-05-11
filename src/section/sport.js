@@ -27,7 +27,7 @@ export async function initSportChart() {
    const titleEl = document.createElement('div');
    titleEl.className = 'sport-title';
    titleEl.innerHTML = `
-    <span class="sport-title-main">Le grand décrochage</span>
+    <span class="sport-title-main">Les causes du décrochage</span>
     <span class="sport-title-sub">
       <strong>2 984 000</strong> jeunes filles concernées en France
     </span>
@@ -47,35 +47,35 @@ export async function initSportChart() {
    // ── Données ────────────────────────────────────────────────
    const FREINS = [
       {
-         id: 1,
+         id: 3,
          short: 'Règles',
          label: 'Les règles empêchent la pratique',
          pct: 53,
          color: '#51687D',
       },
       {
-         id: 2,
+         id: 4,
          short: 'Corps & puberté',
          label: 'Changements physiques rendent le sport moins agréable',
          pct: 49,
          color: '#5D816E',
       },
       {
-         id: 3,
+         id: 5,
          short: 'Jugement & image',
          label: 'Sentiment d\'être jugée ou mal à l\'aise avec son apparence',
          pct: 49,
          color: '#A9BCAA',
       },
       {
-         id: 4,
+         id: 2,
          short: 'Comportements déplacés',
          label: '55% témoins · 42% victimes de comportements déplacés',
          pct: 55,
          color: '#51687D',
       },
       {
-         id: 5,
+         id: 1,
          short: 'Emploi du temps',
          label: 'Horaires incompatibles avec le rythme scolaire',
          pct: 62,
@@ -83,20 +83,28 @@ export async function initSportChart() {
       },
    ];
 
-   // Flèches : 5 qui tombent (freins) + 6 qui atteignent (continuent)
+   // Flèches : 11 touchent la cible (55%), 9 tombent (45%) (freins) 
+   
    const ARROWS_DEF = [
-      { hits: false, freinIdx: 0 },
-      { hits: true, freinIdx: null },
-      { hits: false, freinIdx: 1 },
-      { hits: true, freinIdx: null },
-      { hits: false, freinIdx: 2 },
-      { hits: true, freinIdx: null },
-      { hits: false, freinIdx: 3 },
-      { hits: true, freinIdx: null },
-      { hits: false, freinIdx: 4 },
-      { hits: true, freinIdx: null },
-      { hits: true, freinIdx: null },
+   // Emploi du temps (2)
+      { hits: false, freinIdx: 0, groupIndex: 0 },
+      { hits: false, freinIdx: 0, groupIndex: 1 },
+      // Comportements déplacés (2)
+      { hits: false, freinIdx: 1, groupIndex: 0 },
+      { hits: false, freinIdx: 1, groupIndex: 1 },
+      // Règles (2)
+      { hits: false, freinIdx: 2, groupIndex: 0 },
+      { hits: false, freinIdx: 2, groupIndex: 1 },
+      // Corps & puberté (1)
+      { hits: false, freinIdx: 3, groupIndex: 0 },
+      // Jugement & image (1)
+      { hits: false, freinIdx: 4, groupIndex: 0 },
+      // Continuent (11) — pas de frein, pas de groupIndex utile
+      ...Array.from({ length: 11 }, (_, i) => ({ hits: true, freinIdx: null, groupIndex: i })),
    ];
+
+
+   
 
    // ── État partagé ───────────────────────────────────────────
    const state = {
@@ -105,24 +113,14 @@ export async function initSportChart() {
       H: 0,
    };
 
-   // ── Charger les SVG ────────────────────────────────────────
-   let archerSVG, targetSVG, arrowSVG;
-   function loadSVG(url) {
-      return new Promise((resolve, reject) => {
-         const img = new Image();
-         img.onload = () => resolve(img);
-         img.onerror = reject;
-         img.src = url;
-      });
-   }
-    
+
    // ── p5 sketch ─────────────────────────────────────────────
    new p5((p) => {
-      console.log('p5 initialized');
       let ARCHER_X, ARCHER_Y;
       let TARGET_X, TARGET_Y;
       let GROUND_Y;
       let arrows = [];
+      let archerPNG, targetPNG, arrowPNG;
 
       class Arrow {
          constructor(def, index, total) {
@@ -130,92 +128,104 @@ export async function initSportChart() {
             this.frein = def.freinIdx !== null ? FREINS[def.freinIdx] : null;
             this.index = index;
             this.total = total;
-            this.launchOffset = index * (1 / total) * 0.7;
+            this.gIdx = def.groupIndex ?? 0;
+            this.freinIdx = def.freinIdx ?? -1;
+
+            //espace entre groupes = 90px, entre flèches du même groupe = 10px
+            const GROUP_SPACING = 150;
+            const INGROUP_OFFSET = 10;
+
+            this.landOffsetX = this.freinIdx >= 0
+               ? this.freinIdx * GROUP_SPACING + this.gIdx * INGROUP_OFFSET
+               : index * 22;
          }
 
+  
          computePos(globalProgress) {
-            const start = this.launchOffset;
-            const end = start + 0.25;
-            let t = (globalProgress - start) / (end - start);
-            t = Math.max(0, Math.min(1, t));
+            const delay = this.index / this.total * 0.6;
+            const t = p.constrain((globalProgress - delay) / 0.4, 0, 1);
 
+            const startX = ARCHER_X + 30;
+            const startY = ARCHER_Y -100 //hauteur de tir de l'archère
             if (this.hits) {
-               const cx = p.lerp(ARCHER_X + 30, TARGET_X, t);
-               const arcH = -state.H * 0.35;
-               const cy = p.lerp(ARCHER_Y - 60, TARGET_Y, t) + arcH * 4 * t * (1 - t);
-               return { x: cx, y: cy, t, planted: t >= 1, angle: this.hitAngle(t) };
+               // Ligne droite vers la cible, légèrement décalée en Y pour éviter superposition
+               const endY = TARGET_Y - 120 + this.gIdx * 4;//même hauteur de tir, avec petit décalage vertical selon l'ordre d'arrivée sur la cible
+               const cx = p.lerp(startX, TARGET_X - 40, t); //atterrissage légèrement à gauche du centre de la cible flèches
+               const cy = p.lerp(startY, endY, t);
+               return { x: cx, y: cy, t, planted: t >= 1, angle: Math.atan2(endY - startY, TARGET_X - startX) };
             } else {
-               const maxX = ARCHER_X + 30 + (TARGET_X - ARCHER_X - 30) * (0.45 + this.index * 0.04);
-               const cx = p.lerp(ARCHER_X + 30, maxX, t);
-               const arcH = -state.H * 0.28;
-               const cy = p.lerp(ARCHER_Y - 60, GROUND_Y - 100, t) + arcH * 4 * t * (1 - t);
-               return { x: cx, y: Math.min(cy, GROUND_Y - 60), t, planted: t >= 0.98, angle: this.fallAngle(t) };
+               // Part droit puis tombe — point de chute décalé par groupe
+               const landX = ARCHER_X + 100 + this.landOffsetX;
+               const landY = GROUND_Y - 150;
+               const finalAngle = Math.atan2(landY - startY, landX - startX);
+
+               const cx = p.lerp(startX, landX, t);
+               // Phase 1 : horizontal jusqu'à t=0.4, puis chute
+               const straightEnd = 0.4;
+               let cy, angle;
+               if (t < straightEnd) {
+                  cy = startY; // vol horizontal
+                  angle = 0;
+               } else {
+                  const fallT = (t - straightEnd) / (1 - straightEnd);
+                  cy = p.lerp(startY, landY, fallT * fallT);
+                  angle = p.lerp(0, finalAngle, Math.min(1, (t - straightEnd) * 3));
+               }
+               return { x: cx, y: cy, t, planted: t >= 0.99, angle, finalAngle };
             }
-         } 
-
-         hitAngle(t) {
-            const dt = 0.01;
-            const t2 = Math.min(1, t + dt);
-            const x1 = p.lerp(ARCHER_X + 30, TARGET_X, t);
-            const y1 = p.lerp(ARCHER_Y - 60, TARGET_Y, t) + (-state.H * 0.35) * 4 * t * (1 - t);
-            const x2 = p.lerp(ARCHER_X + 30, TARGET_X, t2);
-            const y2 = p.lerp(ARCHER_Y - 60, TARGET_Y, t2) + (-state.H * 0.35) * 4 * t2 * (1 - t2);
-            return Math.atan2(y2 - y1, x2 - x1);
          }
-
-         fallAngle(t) {
-            const dt = 0.01;
-            const t2 = Math.min(1, t + dt);
-            const maxX = ARCHER_X + 30 + (TARGET_X - ARCHER_X - 30) * (0.45 + this.index * 0.04);
-            const x1 = p.lerp(ARCHER_X + 30, maxX, t);
-            const y1 = p.lerp(ARCHER_Y - 60, GROUND_Y, t) + (-state.H * 0.28) * 4 * t * (1 - t);
-            const x2 = p.lerp(ARCHER_X + 30, maxX, t2);
-            const y2 = p.lerp(ARCHER_Y - 60, GROUND_Y, t2) + (-state.H * 0.28) * 4 * t2 * (1 - t2);
-            return Math.atan2(y2 - y1, x2 - x1);
-         }
-
+         
          draw(globalProgress) {
             const pos = this.computePos(globalProgress);
             if (pos.t <= 0) return;
 
+            const drawAngle = pos.planted
+               ? (this.hits ? 0 : pos.finalAngle) // conserve l'angle d'arrivée
+               : pos.angle;
+
             p.push();
             p.translate(pos.x, pos.y);
-
-            if (pos.planted) {
-               const finalAngle = this.hits ? -0.15 : Math.PI * 0.45;
-               p.rotate(finalAngle);
-            } else {
-               p.rotate(pos.angle);
-            }
-
-            p.image(arrowSVG, -30, -10, 60, 20); 
-
+            p.rotate(drawAngle);
+            p.image(arrowPNG, -25, -6, 50, 12);
             p.pop();
 
-            if (pos.planted && this.frein && pos.t >= 1) {
-               p.fill(0);
-               p.noStroke();
-               p.textAlign(p.CENTER, p.CENTER);
-               p.textSize(12);
-               p.text(this.frein.short, pos.x, pos.y + 30);
+            // Label uniquement quand plantée au sol
+            if (pos.planted && !this.hits && this.frein) {
+               // Une seule flèche par groupe porte le label (la dernière du groupe)
+               const isLast =
+                  (this.freinIdx <= 2 && this.gIdx === 1) || // groupes de 2
+                  (this.freinIdx >= 3);                      // groupes de 1
+
+               if (isLast) {
+                  p.noStroke();
+                  p.fill(this.frein.color);
+                  p.textAlign(p.CENTER, p.TOP);
+                  p.textStyle(p.BOLD);
+                  p.textSize(15);
+                  p.text(`${this.frein.short}\n${this.frein.pct}%`, pos.x, pos.y + 30);
+               }
             }
          }
       }
+      
+    
 
       p.setup = async () => {
-         console.log('p5 setup');
          state.W = canvasHolder.offsetWidth;
          state.H = canvasHolder.offsetHeight;
          p.createCanvas(state.W, state.H).parent(canvasHolder);
-         archerSVG = await p.loadImage('/archere.png');
-         targetSVG = await p.loadImage('/cible.png');
-         arrowSVG =  await p.loadImage('/fleche.png');
-       
+         
+         archerPNG = await p.loadImage('/archere.png');
+         targetPNG = await p.loadImage('/cible.png');
+         arrowPNG =  await p.loadImage('/fleche.png');
+         let arrowW = 200;
+         let arrowH = 200;
+        
          ARCHER_X = 120;
-         ARCHER_Y = state.H - 80;
+         ARCHER_Y = state.H - 250;
          TARGET_X = state.W - 200;
-         TARGET_Y = state.H - 80; // même valeur que ARCHER_Y
-         GROUND_Y = state.H - 20;
+         TARGET_Y = state.H - 250; // même valeur que ARCHER_Y
+         GROUND_Y = state.H - 100;
 
          arrows = ARROWS_DEF.map((def, i) => new Arrow(def, i, ARROWS_DEF.length));
       };
@@ -228,14 +238,16 @@ export async function initSportChart() {
          ARCHER_X = 120;
          ARCHER_Y = state.H - 80;
          TARGET_X = state.W - 200;
-         TARGET_Y = state.H * 0.45;
+         TARGET_Y = state.H - 80;
          GROUND_Y = state.H - 20;
+         arrows = ARROWS_DEF.map((def, i) => new Arrow(def, i, ARROWS_DEF.length));
       };
 
       p.draw = () => {
          p.clear();
-         p.image(archerSVG, ARCHER_X - 100, ARCHER_Y - 200, 200, 200);
-         p.image(targetSVG, TARGET_X - 100, TARGET_Y - 100, 200, 200);
+         p.image(archerPNG, ARCHER_X - 90, ARCHER_Y - 235, 189, 235);
+         p.image(targetPNG, TARGET_X - 60, TARGET_Y - 160, 120, 160);
+
          arrows.forEach(arrow => arrow.draw(state.progress));
       };
        

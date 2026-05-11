@@ -85,7 +85,6 @@ export default function initWorkplace() {
         position: absolute;
         top: 0; right: -60px;
         width: 60px; height: 100%;
-        background: linear-gradient(to right, #f2ece0, transparent);
         pointer-events: none;
       }
       .wk-eyebrow {

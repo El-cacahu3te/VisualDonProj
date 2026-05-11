@@ -47,7 +47,7 @@ export default function initFeminicide() {
       }
       .fm-text::after {
         content: ''; position: absolute; top:0; right:-60px; width:60px; height:100%;
-        background: linear-gradient(to right, var(--bg), transparent); pointer-events: none;
+        pointer-events: none;
       }
       .fm-eyebrow {
         font-size: 0.62rem; letter-spacing:0.22em; text-transform: uppercase;

@@ -69,14 +69,6 @@ export default function initToys() {
       .toys-garden-soil {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top,
-          #5c3d1e 0%,
-          #7a5230 18%,
-          #9a6e42 40%,
-          #b88a58 62%,
-          #d4aa78 82%,
-          rgba(212,170,120,0) 100%
-        );
       }
 
       .toys-garden-rows {
@@ -100,14 +92,6 @@ export default function initToys() {
       .toys-garden-light {
         position: absolute;
         top: 0; left: 0; right: 0; height: 3px;
-        background: linear-gradient(90deg,
-          transparent 0%,
-          rgba(255,210,120,0.0) 10%,
-          rgba(255,210,120,0.4) 35%,
-          rgba(255,225,150,0.6) 50%,
-          rgba(255,210,120,0.4) 65%,
-          rgba(255,210,120,0.0) 90%,
-          transparent 100%
         );
       }
 
@@ -115,13 +99,6 @@ export default function initToys() {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; height: 1px;
-        background: linear-gradient(90deg,
-          transparent 0%,
-          rgba(255,220,140,0.35) 20%,
-          rgba(255,220,140,0.55) 50%,
-          rgba(255,220,140,0.35) 80%,
-          transparent 100%
-        );
       }
 
       .toys-canvas {
@@ -155,11 +132,6 @@ export default function initToys() {
         padding: 2.5rem 2.5rem 2.5rem 3rem;
         z-index: 20;
         pointer-events: none;
-        background: linear-gradient(to right,
-          rgba(245,240,232,1) 0%,
-          rgba(245,240,232,0.97) 75%,
-          rgba(245,240,232,0) 100%
-        );
       }
 
       .toys-eyebrow {
