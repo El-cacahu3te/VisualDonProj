@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Quicksand:wght@300;400;500;600&display=swap');
+
+/* Variables */
+:root {
+   --text: #6b6375;
+   --text-h: #08060d;
+   --bg: #fafafa;
+   --border: #e5e4e7;
+   --code-bg: #f9ece8;
+   --accent: #EDAFB8;
+   --accent-bg: rgba(237, 175, 184, 0.12);
+   --accent-border: rgba(237, 175, 184, 0.35);
+   --social-bg: rgba(255, 245, 242, 0.65);
+   --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+   --sans: 'Quicksand', system-ui, sans-serif;
+   --heading: 'Fleur De Leah', serif;
+   --mono: ui-monospace, Consolas, monospace;
+   --font-size-base: 1.125rem;
+   --line-height-base: 1.45;
+   --letter-spacing-base: 0.01em;
+}
+
+@media (max-width: 1024px) {
+   :root {
+      --font-size-base: 1rem;
+   }
+}
+
+@media (prefers-color-scheme: dark) {
+   :root {
+      --text: #9ca3af;
+      --text-h: #f3f4f6;
+      --bg: #16171d;
+      --border: #2e303a;
+      --code-bg: #1f2028;
+      --accent: #c084fc;
+      --accent-bg: rgba(192, 132, 252, 0.15);
+      --accent-border: rgba(192, 132, 252, 0.5);
+      --social-bg: rgba(47, 48, 58, 0.5);
+      --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+   }
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   font-size: var(--font-size-base);
+   line-height: var(--line-height-base);
+   letter-spacing: var(--letter-spacing-base);
+   color: var(--text);
+   background: var(--bg);
+   color-scheme: light dark;
+   font-synthesis: none;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+   font-family: var(--sans);
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+/* Typographie */
+h1,
+h2,
+h3 {
+   font-family: var(--heading);
+   font-weight: 500;
+   color: var(--text-h);
+   line-height: 1.2;
+}
+
+h1 {
+   font-size: clamp(3.5rem, 6vw, 6rem);
+   letter-spacing: -0.03em;
+   margin: 2rem 0;
+}
+
+h2 {
+   font-size: clamp(1.75rem, 3vw, 2.625rem);
+   letter-spacing: -0.01em;
+   margin: 0 0 0.5em;
+}
+
+p {
+   margin: 0 0 1em;
+   line-height: 1.6;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+   transition: opacity 0.2s ease;
+}
+
+a:hover {
+   opacity: 0.7;
+}
+
+/* Composants réutilisables */
+code,
+.counter {
+   font-family: var(--mono);
+   display: inline-flex;
+   align-items: center;
+   border-radius: 0.25rem;
+   color: var(--text-h);
+   padding: 0.25rem 0.5rem;
+}
+
+code {
+   font-size: 0.875rem;
+   background: var(--code-bg);
+}
+
+.counter {
+   font-size: 1rem;
+   background: var(--accent-bg);
+   border: 2px solid transparent;
+   margin-bottom: 1.5rem;
+}
+
+.counter:hover {
+   border-color: var(--accent-border);
+}
+
+.counter:focus-visible {
+   outline: 2px solid var(--accent);
+   outline-offset: 2px;
+}

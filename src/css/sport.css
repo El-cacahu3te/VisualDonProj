@@ -1,0 +1,167 @@
+/* =============================================
+   SPORT SCENE — Layout
+============================================= */
+.sport-scene {
+   position: relative;
+   height: 800vh;
+   /* augmente si besoin */
+}
+
+.sport-sticky-scene {
+   position: sticky;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   overflow: hidden;
+}
+
+.sport-canvas {
+   position: absolute;
+   inset: 0;
+}
+
+/* =============================================
+   SPORT SCENE — Panneau texte
+============================================= */
+.sport-panel {
+   position: absolute;
+   top: 25%;
+   left: 0;
+   transform: translateY(-50%);
+   width: 45%;
+   max-width: 520px;
+   padding: 0 2rem;
+   z-index: 10;
+   pointer-events: none;
+   font-family: var(--sans);
+}
+
+.sport-eyebrow {
+   font-size: 0.6rem;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: #9a8060;
+   margin-bottom: 0.8rem;
+}
+
+.sport-panel-title {
+   font-family: var(--heading);
+   font-size: clamp(1.8rem, 3vw, 2.5rem);
+   font-weight: 400;
+   color: #1a1208;
+   line-height: 1.2;
+   margin-bottom: 1.2rem;
+}
+
+.sport-body {
+   font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+   color: #3a3020;
+   line-height: 1.8;
+}
+
+.sport-body em {
+   font-style: italic;
+   color: #5a4830;
+}
+
+.sport-body strong {
+   font-weight: 600;
+   color: #1a1208;
+}
+
+.sport-note {
+   margin-top: 1.2rem;
+   font-size: 0.78rem;
+   color: #7a6848;
+   line-height: 1.7;
+   font-style: italic;
+   border-left: 3px solid #c4a060;
+   padding-left: 1rem;
+}
+
+/* =============================================
+   SPORT SCENE — Animations d'entrée
+============================================= */
+.sport-eyebrow,
+.sport-panel-title,
+.sport-body,
+.sport-note {
+   opacity: 0;
+   transform: translateY(8px);
+   transition: opacity 0.45s, transform 0.45s;
+}
+
+.sport-panel-title {
+   transition-delay: 0.07s;
+}
+
+.sport-body {
+   transition-delay: 0.14s;
+}
+
+.sport-note {
+   transition-delay: 0.21s;
+}
+
+.sport-panel.visible .sport-eyebrow,
+.sport-panel.visible .sport-panel-title,
+.sport-panel.visible .sport-body,
+.sport-panel.visible .sport-note {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+/* =============================================
+   SPORT SCENE — Stat finale
+============================================= */
+.sport-ratio-final {
+   position: absolute;
+   bottom: 3rem;
+   right: 3rem;
+   z-index: 10;
+   font-family: var(--heading);
+   font-size: clamp(1.4rem, 2.5vw, 2rem);
+   font-weight: 400;
+   color: #1a1208;
+   line-height: 1.4;
+   text-align: right;
+   pointer-events: none;
+   opacity: 0;
+   transform: translateY(10px);
+   transition: opacity 0.45s, transform 0.45s;
+}
+
+.sport-ratio-final.visible {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+.sport-ratio-miss {
+   font-size: clamp(2.5rem, 5vw, 4rem);
+   color: #8c4a4a;
+   display: block;
+   line-height: 1;
+   margin-bottom: 0.3rem;
+}
+
+.sport-ratio-hit {
+   font-size: clamp(2.5rem, 5vw, 4rem);
+   color: #2f5f7d;
+   display: block;
+   line-height: 1;
+   margin-bottom: 0.3rem;
+}
+
+/* =============================================
+   SPORT SCENE — Source
+============================================= */
+.sport-source {
+   position: absolute;
+   bottom: 1rem;
+   right: 1.5rem;
+   z-index: 10;
+   font-size: 0.56rem;
+   font-style: italic;
+   color: #c0b09a;
+   pointer-events: none;
+}

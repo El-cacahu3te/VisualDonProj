@@ -1,4 +1,8 @@
-import './style.css'
+import './css/base.css'
+import './css/layout.css'
+import './css/retrospective.css'
+import './css/sport.css'
+
 import toys from './data/toys.json'
 import workplace from './data/workplace.json'
 import feminicide from './data/feminicide.json'

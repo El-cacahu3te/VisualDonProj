@@ -1,0 +1,178 @@
+/* Shared */
+#retrospective,
+#msgEspoir {
+   max-width: min(820px, 90vw);
+   margin-inline: auto;
+}
+
+/* Retrospective */
+#retrospective {
+   padding: 12vh clamp(1.5rem, 5vw, 5rem) 10vh;
+}
+
+#retrospective .section-label {
+   font-size: clamp(0.6rem, 1vw, 0.68rem);
+   font-weight: 500;
+   letter-spacing: 0.2em;
+   text-transform: uppercase;
+   color: #888;
+   margin-bottom: 0.6rem;
+}
+
+#retrospective h2 {
+   font-size: clamp(1.6rem, 4vw, 3.2rem);
+   margin: 0 0 2.5rem;
+   line-height: 1.1;
+   color: #111;
+}
+
+#retrospective .section-intro {
+   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+   line-height: 1.9;
+   color: #333;
+   margin-bottom: 3.5rem;
+   padding-bottom: 3.5rem;
+   border-bottom: 1px solid #ccc;
+}
+
+#retrospective .section-subtitle {
+   font-family: var(--heading);
+   font-size: clamp(1.2rem, 2.5vw, 2rem);
+   color: #111;
+   margin-bottom: 0.3rem;
+   line-height: 1.2;
+}
+
+#retrospective .section-meta {
+   font-size: clamp(0.72rem, 1vw, 0.82rem);
+   letter-spacing: 0.05em;
+   color: #888;
+   margin-bottom: 2rem;
+}
+
+#retrospective ul {
+   list-style: none;
+   padding: 0;
+   margin: 0 0 3rem;
+}
+
+#retrospective ul li {
+   font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+   line-height: 1.6;
+   padding: 1rem 0 1rem 1.6rem;
+   border-bottom: 1px solid #ccc;
+   position: relative;
+   color: #333;
+   transition: color 0.2s;
+}
+
+#retrospective ul li:hover {
+   color: #111;
+}
+
+#retrospective ul li::before {
+   content: '—';
+   position: absolute;
+   left: 0;
+   top: 1.05rem;
+   font-size: 0.7rem;
+   color: #aaa;
+}
+
+#retrospective .section-closing {
+   font-family: var(--heading);
+   font-size: clamp(1.1rem, 2vw, 1.8rem);
+   color: #111;
+   line-height: 1.3;
+   margin-top: 1rem;
+   padding-top: 3rem;
+   border-top: 1px solid #ccc;
+}
+
+/* msgEspoir */
+#msgEspoir {
+   padding: 10vh clamp(1.5rem, 5vw, 5rem) 14vh;
+}
+
+#msgEspoir .section-label {
+   font-size: clamp(0.6rem, 1vw, 0.68rem);
+   font-weight: 500;
+   letter-spacing: 0.2em;
+   text-transform: uppercase;
+   color: #888;
+   margin-bottom: 0.6rem;
+}
+
+#msgEspoir h2 {
+   font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+   margin: 0 0 2.5rem;
+   line-height: 1.15;
+   color: #111;
+}
+
+#msgEspoir>p {
+   font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+   line-height: 2;
+   color: #333;
+   margin-bottom: 1.8rem;
+}
+
+#msgEspoir blockquote {
+   margin: 2.5rem 0;
+   padding: 0 0 0 clamp(1rem, 2vw, 1.5rem);
+   border-left: 2px solid #ccc;
+}
+
+#msgEspoir blockquote p {
+   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+   font-style: italic;
+   line-height: 1.75;
+   color: #222;
+   margin-bottom: 0.6rem;
+}
+
+#msgEspoir blockquote cite {
+   font-size: clamp(0.6rem, 0.9vw, 0.68rem);
+   font-weight: 600;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   font-style: normal;
+   color: #888;
+}
+
+#msgEspoir .section-note {
+   font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+   color: #555;
+   margin-top: 3rem;
+   padding-top: 2rem;
+   border-top: 1px solid #ccc;
+}
+
+#msgEspoir a {
+   color: #333;
+   text-decoration: underline;
+   text-underline-offset: 3px;
+   text-decoration-thickness: 1px;
+}
+
+#msgEspoir a:hover {
+   color: #111;
+}
+
+/* Media queries */
+@media (max-width: 600px) {
+
+   #retrospective,
+   #msgEspoir {
+      max-width: 100%;
+      padding-inline: 1.25rem;
+   }
+
+   #retrospective ul li {
+      padding-left: 1.2rem;
+   }
+
+   #msgEspoir blockquote {
+      padding-left: 1rem;
+   }
+}
