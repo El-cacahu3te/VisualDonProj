@@ -49,44 +49,51 @@ export async function initSportChart() {
    setTimeout(() => textPanel.classList.add('visible'), 500);
 
    // ── Données ────────────────────────────────────────────────
+   // const FREINS = [
+   //    {
+   //       id: 3,
+   //       short: 'Règles',
+   //       label: 'Les règles empêchent la pratique',
+   //       pct: 53,
+   //       color: '#51687D',
+   //    },
+   //    {
+   //       id: 4,
+   //       short: 'Corps & puberté',
+   //       label: 'Changements physiques rendent le sport moins agréable',
+   //       pct: 49,
+   //       color: '#5D816E',
+   //    },
+   //    {
+   //       id: 5,
+   //       short: 'Jugement & image',
+   //       label: 'Sentiment d\'être jugée ou mal à l\'aise avec son apparence',
+   //       pct: 49,
+   //       color: '#A9BCAA',
+   //    },
+   //    {
+   //       id: 2,
+   //       short: 'Comportements déplacés',
+   //       label: '55% témoins · 42% victimes de comportements déplacés',
+   //       pct: 55,
+   //       color: '#51687D',
+   //    },
+   //    {
+   //       id: 1,
+   //       short: 'Emploi du temps',
+   //       label: 'Horaires incompatibles avec le rythme scolaire',
+   //       pct: 62,
+   //       color: '#5D816E',
+   //    },
+   // ];
    const FREINS = [
-      {
-         id: 3,
-         short: 'Règles',
-         label: 'Les règles empêchent la pratique',
-         pct: 53,
-         color: '#51687D',
-      },
-      {
-         id: 4,
-         short: 'Corps & puberté',
-         label: 'Changements physiques rendent le sport moins agréable',
-         pct: 49,
-         color: '#5D816E',
-      },
-      {
-         id: 5,
-         short: 'Jugement & image',
-         label: 'Sentiment d\'être jugée ou mal à l\'aise avec son apparence',
-         pct: 49,
-         color: '#A9BCAA',
-      },
-      {
-         id: 2,
-         short: 'Comportements déplacés',
-         label: '55% témoins · 42% victimes de comportements déplacés',
-         pct: 55,
-         color: '#51687D',
-      },
-      {
-         id: 1,
-         short: 'Emploi du temps',
-         label: 'Horaires incompatibles avec le rythme scolaire',
-         pct: 62,
-         color: '#5D816E',
-      },
+      { short: 'Emploi du temps', pct: 23, color: '#5D816E' },
+      { short: 'Comportements déplacés', pct: 21, color: '#51687D' },
+      { short: 'Règles', pct: 20, color: '#51687D' },
+      { short: 'Corps & puberté', pct: 18, color: '#5D816E' },
+      { short: 'Jugement & image', pct: 18, color: '#A9BCAA' },
    ];
-
+    
    // Flèches : 11 touchent la cible (55%), 9 tombent (45%) (freins) 
    
    const ARROWS_DEF = [
