@@ -4,7 +4,7 @@
   "description": "Chaque fleur fanée représente une femme tuée. Ces données sont partielles et évolutives.",
   "source": "Observatoire des féminicides Suisse",
   "year": 2025,
-  "totalVictims": 28,
+  "totalVictims": 27,
   "totalIncidents": 23,
   "note": "Certains incidents comptent plusieurs victimes (mère et enfants, deux femmes tuées ensemble). Les âges marqués null n'étaient pas connus au moment de la publication.",
 
