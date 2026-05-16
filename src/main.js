@@ -2,7 +2,9 @@ import './css/base.css'
 import './css/layout.css'
 import './css/retrospective.css'
 import './css/sport.css'
-import './css/feminicide.css';
+import './css/feminicide.css'
+import './css/toys.css'
+import './css/workplace.css'
 
 
 import toys from './data/toys.json'

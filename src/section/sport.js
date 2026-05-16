@@ -26,11 +26,11 @@ export async function initSportChart() {
   const textPanel = document.createElement("div");
   textPanel.className = "sport-panel";
   textPanel.innerHTML = `
-    <div class="sport-eyebrow">Freins auxratiques sportives</div>
+    <div class="sport-eyebrow">Freins aux pratiques sportives</div>
     <div class="sport-panel-title">Quand les freins empêchent les filles de continuer.</div>
     <div class="sport-body">
       45,2% des jeunes filles abandonnent le sport en France.<br><br>
-      Les règles, le regard des autres et les horaires incompatibles rendent la pratique moins durable.
+      Les règles, le regard des autres et les horaires incompatibles rendent la pratique difficile.
     </div>
     <div class="sport-note">Chaque flèche représente un obstacle : certaines atteignent la cible, d'autres tombent avant.</div>
   `;
@@ -40,9 +40,12 @@ export async function initSportChart() {
    ratioPill.className = "sport-ratio-final";
 
   ratioPill.innerHTML = `
-  <span class="sport-ratio-miss">45,2%</span> ont arrêté malgré elles
-  <br>
-  <span class="sport-ratio-hit">54,8%</span> par choix assumé
+  <div class="sport-eyebrow">Résultat</div>
+  <span class="sport-ratio-miss">45,2%</span>
+  <span class="sport-ratio-label">ont arrêté malgré elles</span>
+  <br><br>
+  <span class="sport-ratio-hit">54,8%</span>
+  <span class="sport-ratio-label">continuent de pratiqué malgré tout</span>
 `;
 
   sticky.appendChild(ratioPill);
@@ -54,7 +57,7 @@ export async function initSportChart() {
   sticky.appendChild(src);
 
   // Animation du panneau texte
-  setTimeout(() => textPanel.classList.add("visible"), 500);
+  textPanel.classList.add("visible");
 
   // ── Données ────────────────────────────────────────────────
   const FREINS = [
@@ -176,29 +179,48 @@ export async function initSportChart() {
         p.push();
         p.translate(pos.x, pos.y);
         p.rotate(drawAngle);
-        p.image(arrowPNG, -25, -6, 50, 12);
+        p.image(arrowPNG, -35, -9, 70, 35);
         p.pop();
 
         // Label uniquement quand plantée au sol
         if (pos.planted && !this.hits && this.frein) {
-          // Une seule flèche par groupe porte le label (la dernière du groupe)
           const isLast =
-            (this.freinIdx <= 2 && this.gIdx === 1) || // groupes de 2
-            this.freinIdx >= 3; // groupes de 1
+            (this.freinIdx <= 2 && this.gIdx === 1) ||
+            this.freinIdx >= 3;
 
           if (isLast) {
+            const lx = pos.x;
+            const ly = GROUND_Y - 100; // juste sous le point de chute
+
+            // — fond pill —
+            const PAD_X = 10;
+            const PAD_Y = 6;
+            const lineH = 18; 
+            const boxW = 130;
+            const boxH = lineH * 2 + PAD_Y * 2;
+
             p.noStroke();
+            p.fill(255, 255, 255, 210); // fond blanc semi-transparent
+            p.rectMode(p.CENTER);
+            p.rect(lx, ly + boxH / 2, boxW, boxH, 6); // coins arrondis
+
+            // — pourcentage (grand, coloré) —
             p.fill(this.frein.color);
             p.textAlign(p.CENTER, p.TOP);
             p.textStyle(p.BOLD);
-            p.textSize(14);
-            p.text(
-              `${this.frein.short}\n${this.frein.pct}%`,
-              pos.x,
-              pos.y + 50,
-            );
+            p.textSize(15);
+            p.text(`${this.frein.pct}%`, lx, ly + PAD_Y);
+
+            // — label (petit, neutre) —
+            p.fill(80, 70, 60); // brun neutre — système 3
+            p.textStyle(p.NORMAL);
+            p.textSize(10);
+            p.text(this.frein.short, lx, ly + PAD_Y + lineH);
+
+            p.rectMode(p.CORNER); // reset
           }
         }
+        
       }
     }
 
@@ -252,13 +274,18 @@ export async function initSportChart() {
      onUpdate(self) {
         state.progress = self.progress;
 
-        if (self.progress > 0.95) {//montre fin du  scroll entête
-           ratioPill.classList.add("visible");
-           textPanel.classList.remove("visible"); // cache le panel intro
-        } else {
-           ratioPill.classList.remove("visible");
-           textPanel.classList.add("visible");
-        }
+       if (self.progress > 0.75) {
+         ratioPill.classList.add("visible");
+       } else {
+         ratioPill.classList.remove("visible");
+       }
+
+       if (self.progress > 0.65) {
+         textPanel.classList.remove("visible");  // panel intro part un peu avant
+       } else {
+         textPanel.classList.add("visible");
+       }
+       
      },    
   });
 

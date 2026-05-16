@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+#lesJouets {
+   position: relative;
+   width: 100%;
+   height: 750vh;
+   font-family: 'Lora', Georgia, serif;
+}
+
+.toys-sticky {
+   position: sticky;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   overflow: hidden;
+}
+
+/* ── Canvas pleine page ── */
+.toys-canvas {
+   position: absolute;
+   inset: 0;
+   z-index: 2;
+}
+
+/* ── Panneau texte : bas-gauche ──
+   Zone texte : 0→38% de large, 45%→100% de haut
+   Les pousses évitent cette zone.              */
+.toys-panel {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 38%;
+   z-index: 30;
+   padding: 2rem 2.5rem 2.5rem 3rem;
+   pointer-events: none;
+}
+
+.toys-eyebrow {
+   font-size: 0.6rem;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: #9a8a70;
+   margin-bottom: 0.6rem;
+   opacity: 0;
+   transform: translateY(5px);
+   transition: opacity 0.45s, transform 0.45s;
+}
+
+.toys-headline {
+   font-size: clamp(1.25rem, 2vw, 1.75rem);
+   font-weight: 600;
+   color: #1a1a1a;
+   line-height: 1.25;
+   margin-bottom: 0.9rem;
+   opacity: 0;
+   transform: translateY(7px);
+   transition: opacity 0.45s 0.07s, transform 0.45s 0.07s;
+}
+
+.toys-body {
+   font-size: clamp(0.75rem, 0.95vw, 0.85rem);
+   color: #4a4035;
+   line-height: 1.8;
+   opacity: 0;
+   transform: translateY(7px);
+   transition: opacity 0.45s 0.14s, transform 0.45s 0.14s;
+}
+
+.toys-body em {
+   font-style: italic;
+   color: #6a5a40;
+}
+
+.toys-body strong {
+   font-weight: 600;
+   color: #2a2018;
+}
+
+.toys-note {
+   margin-top: 0.9rem;
+   font-size: 0.7rem;
+   color: #9a8a70;
+   line-height: 1.6;
+   font-style: italic;
+   border-left: 2px solid #c4a97a;
+   padding-left: 0.8rem;
+   opacity: 0;
+   transform: translateY(5px);
+   transition: opacity 0.45s 0.21s, transform 0.45s 0.21s;
+}
+
+.toys-panel.visible .toys-eyebrow,
+.toys-panel.visible .toys-headline,
+.toys-panel.visible .toys-body,
+.toys-panel.visible .toys-note {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+/* ── Tige (img svg) ── */
+.sprout-el {
+   position: absolute;
+   transform-origin: bottom center;
+   cursor: pointer;
+   z-index: 4;
+   transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.sprout-el img {
+   display: block;
+   width: auto;
+   height: 80px;
+   pointer-events: none;
+   user-select: none;
+}
+
+/* ── Tooltip ── */
+.sprout-tooltip {
+   position: absolute;
+   bottom: calc(100% + 8px);
+   left: 50%;
+   transform: translateX(-50%);
+   background: #2a2018;
+   color: #f5f0e8;
+   font-size: 0.62rem;
+   line-height: 1.5;
+   padding: 0.4rem 0.7rem;
+   border-radius: 3px;
+   white-space: nowrap;
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.15s;
+   z-index: 50;
+}
+
+.sprout-tooltip::after {
+   content: '';
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+   border: 4px solid transparent;
+   border-top-color: #2a2018;
+}
+
+.sprout-el:hover .sprout-tooltip {
+   opacity: 1;
+}
+
+/* ── Hover : les autres s'effacent ── */
+.toys-canvas.has-hover .sprout-el:not(:hover) {
+   opacity: 0.15 !important;
+   filter: saturate(0.2) !important;
+}
+
+.toys-canvas.has-hover .sprout-el:hover {
+   opacity: 1 !important;
+   filter: none !important;
+   z-index: 20;
+}
+
+/* ── Labels cluster ── */
+.toys-cluster-label {
+   position: absolute;
+   font-size: 0.68rem;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: #9a8a70;
+   pointer-events: none;
+   transform: translateX(-50%);
+   white-space: nowrap;
+   transition: opacity 0.5s;
+}
+
+/* ── Badges stats scène 3 ── */
+.toys-stat-badge {
+   position: absolute;
+   pointer-events: none;
+   transform: translateX(-50%);
+   transition: opacity 0.5s;
+   text-align: center;
+   z-index: 25;
+}
+
+.toys-stat-number {
+   display: block;
+   font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+   font-weight: 600;
+   color: #2a2018;
+   white-space: nowrap;
+}
+
+.toys-stat-sub {
+   display: block;
+   font-size: 0.58rem;
+   color: #9a8a70;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   margin-top: 2px;
+}
+
+/* ── Source ── */
+.toys-source {
+   position: absolute;
+   bottom: 1rem;
+   right: 1.5rem;
+   font-size: 0.56rem;
+   color: #c0b09a;
+   font-style: italic;
+   z-index: 10;
+   pointer-events: none;
+}
+
+/* ── Scroll hint ── */
+.toys-hint {
+   position: absolute;
+   bottom: 2rem;
+   right: 2.5rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 4px;
+   z-index: 10;
+   pointer-events: none;
+   transition: opacity 0.4s;
+}
+
+.toys-hint span {
+   font-size: 0.56rem;
+   letter-spacing: 0.15em;
+   text-transform: uppercase;
+   color: #9a8a70;
+}
+
+.toys-hint-arrow {
+   width: 14px;
+   height: 14px;
+   border-right: 1.5px solid #9a8a70;
+   border-bottom: 1.5px solid #9a8a70;
+   transform: rotate(45deg);
+   animation: hintBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes hintBounce {
+
+   0%,
+   100% {
+      transform: rotate(45deg) translateY(0);
+   }
+
+   50% {
+      transform: rotate(45deg) translateY(4px);
+   }
+}
