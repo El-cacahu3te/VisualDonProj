@@ -57,7 +57,7 @@
    font-weight: 400;
    color: #1a1208;
    line-height: 1.2;
-   margin-bottom: 1.4rem;
+   margin-bottom: 1rem;
    opacity: 0;
    transform: translateY(10px);
    transition: opacity 0.45s 0.07s, transform 0.45s 0.07s;
@@ -77,13 +77,20 @@
    color: #5a4830;
 }
 
+.wk-body p {
+   margin: 0 0 1rem 0;
+}
+
+.wk-body p:last-child {
+   margin-bottom: 0;}
+
 .wk-body strong {
    font-weight: 600;
    color: #1a1208;
 }
 
 .wk-note {
-   margin-top: 1.4rem;
+   margin-top: 1rem;
    font-size: 0.78rem;
    color: #7a6848;
    line-height: 1.7;

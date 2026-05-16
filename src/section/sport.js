@@ -193,28 +193,38 @@ export async function initSportChart() {
             const ly = GROUND_Y - 100; // juste sous le point de chute
 
             // — fond pill —
-            const PAD_X = 10;
+            // — mesure dynamique des textes —
+            p.textStyle(p.BOLD);
+            p.textSize(18); // taille du pourcentage
+            const pctStr = `${this.frein.pct}%`;
+            const pctW = p.textWidth(pctStr);
+
+            p.textStyle(p.NORMAL);
+            p.textSize(15); // taille du label
+            const labelW = p.textWidth(this.frein.short);
+
+            // largeur = le plus large des deux + padding
+            const PAD_X = 16;
             const PAD_Y = 6;
-            const lineH = 18; 
-            const boxW = 130;
+            const lineH = 20;
+            const boxW = Math.max(pctW, labelW) + PAD_X * 2;
             const boxH = lineH * 2 + PAD_Y * 2;
 
             p.noStroke();
-            p.fill(255, 255, 255, 210); // fond blanc semi-transparent
+            p.fill(241, 187, 190, 50); // rose pâle semi-transparent
             p.rectMode(p.CENTER);
-            p.rect(lx, ly + boxH / 2, boxW, boxH, 6); // coins arrondis
-
+            p.rect(lx, ly + boxH / 2, boxW, boxH, 15); // fond arrondi
             // — pourcentage (grand, coloré) —
-            p.fill(this.frein.color);
+            p.fill(93, 129, 110);
             p.textAlign(p.CENTER, p.TOP);
             p.textStyle(p.BOLD);
-            p.textSize(15);
+            p.textSize(18);
             p.text(`${this.frein.pct}%`, lx, ly + PAD_Y);
 
             // — label (petit, neutre) —
             p.fill(80, 70, 60); // brun neutre — système 3
             p.textStyle(p.NORMAL);
-            p.textSize(10);
+            p.textSize(15);
             p.text(this.frein.short, lx, ly + PAD_Y + lineH);
 
             p.rectMode(p.CORNER); // reset

@@ -38,19 +38,20 @@ export default function initToys() {
     const panel = document.createElement('div')
     panel.className = 'toys-panel'
     panel.innerHTML = `
-      <div class="toys-eyebrow"  id="t-eyebrow">Scène 1 · Un jardin libre</div>
-      <div class="toys-headline" id="t-headline">Et si les enfants choisissaient librement&nbsp;?</div>
-      <div class="toys-body"     id="t-body">
-        Dans ce jardin, chaque pousse représente un enfant de 2 ans.<br><br>
-        Elles gravitent naturellement autour de trois centres d'intérêt :<br>
-        <em>prendre soin</em>, <em>agir</em>, <em>construire</em>.<br><br>
-        Rien ne distingue encore les filles des garçons.
-      </div>
-      <div class="toys-note" id="t-note">
-        63% des filles <strong>et</strong> 52% des garçons jouent avec des peluches.<br>
-        57% des filles jouent à la balle. Les intérêts se recoupent largement.
-      </div>
-    `
+  <div class="toys-eyebrow"  id="t-eyebrow">Scène 1 · Un jardin libre</div>
+  <div class="toys-headline" id="t-headline">Et si les enfants choisissaient librement&nbsp;?</div>
+  <div class="toys-body"     id="t-body">
+    <p>Dans ce jardin, chaque pousse représente un enfant de 2 ans.</p>
+    <p>Elles gravitent naturellement autour de trois centres d'intérêt :
+    <em>prendre soin</em>, <em>agir</em>, <em>construire</em>.</p>
+    <p>Rien ne distingue encore les filles des garçons.</p>
+  </div>
+  <div class="toys-note" id="t-note">
+    63% des filles <strong>et</strong> 52% des garçons jouent avec des peluches.<br>
+    57% des filles jouent à la balle. Les intérêts se recoupent largement.
+  </div>
+`
+
     sticky.appendChild(panel)
 
     // Source
@@ -226,35 +227,38 @@ export default function initToys() {
       {
         eyebrow: 'Scène 1 · Un jardin libre',
         headline: 'Et si les enfants choisissaient librement&nbsp;?',
-        body: `Dans ce jardin, chaque pousse représente un enfant de 2 ans.<br><br>
-                   Elles gravitent naturellement autour de trois centres d'intérêt :<br>
-                   <em>prendre soin</em>, <em>agir</em>, <em>construire</em>.<br><br>
-                   Rien ne distingue encore les filles des garçons.`,
+        body: `
+          <p>Dans ce jardin, chaque pousse représente un enfant de 2 ans.</p>
+          <p>Elles gravitent naturellement autour de trois centres d'intérêt :
+          <em>prendre soin</em>, <em>agir</em>, <em>construire</em>.</p>
+          <p>Rien ne distingue encore les filles des garçons.</p>`,
         note: `63% des filles <strong>et</strong> 52% des garçons jouent avec des peluches.<br>
-                   57% des filles jouent à la balle. Les intérêts se recoupent largement.`,
+               57% des filles jouent à la balle. Les intérêts se recoupent largement.`,
       },
       {
         eyebrow: 'Scène 2 · Le jouet leur est imposé',
         headline: 'Puis quelque chose change.',
-        body: `Les pousses grandissent — et les jouets deviennent genrés.<br><br>
-                   Celles qui quittent leur centre naturel se grisent.<br><br>
-                   Elles ne disparaissent pas.<br>
-                   <strong>Elles sont redirigées.</strong>`,
+        body: `
+          <p>Les pousses grandissent — et les jouets deviennent genrés.</p>
+          <p>Celles qui quittent leur centre naturel se grisent.</p>
+          <p>Elles ne disparaissent pas.<br>
+          <strong>Elles sont redirigées.</strong></p>`,
         note: `Ce n'est pas un changement naturel de goûts.<br>
-                   C'est l'effet des attentes, des normes, des jouets qu'on leur propose.`,
+               C'est l'effet des attentes, des normes, des jouets qu'on leur propose.`,
       },
       {
         eyebrow: 'Scène 3 · L\'écart le plus fort',
         headline: 'Ce ne sont plus des préférences.<br>Ce sont des écarts.',
-        body: `Les différences deviennent massives.<br><br>
-                   Elles ne reflètent plus une curiosité naturelle.<br>
-                   Elles traduisent <strong>une assignation</strong>.`,
+        body: `
+          <p>Les différences deviennent massives.</p>
+          <p>Elles ne reflètent plus une curiosité naturelle.<br>
+          Elles traduisent <strong>une assignation</strong>.</p>`,
         note: `Un enfant sur deux change de trajectoire.<br>
-                   Pas parce qu'il en a envie.<br>
-                   <em>Parce que son environnement l'y pousse.</em>`,
+               Pas parce qu'il en a envie.<br>
+               <em>Parce que son environnement l'y pousse.</em>`,
       },
     ]
-
+    
     function setScene(idx) {
       const s = SCENES[idx]
       panel.classList.remove('visible')
@@ -272,11 +276,11 @@ export default function initToys() {
       return toy && toy.cluster !== sp.freeCluster
     }
 
-    // ── SCROLLTRIGGER 1 : Scène 0→1  (0% → 33%) ─────────────────────────────
+    // ── SCROLLTRIGGER 1 : Scène 0→1  (0% → 45%) ─────────────────────────────
     ScrollTrigger.create({
       trigger: container,
       start: 'top top',
-      end: '33% top',
+      end: '60% top',
       scrub: 2.5,
       onUpdate(self) {
         const p = self.progress
@@ -310,8 +314,8 @@ export default function initToys() {
     // ── SCROLLTRIGGER 2 : Scène 1→2  (33% → 66%) ────────────────────────────
     ScrollTrigger.create({
       trigger: container,
-      start: '33% top',
-      end: '66% top',
+      start: '60% top',
+      end: '75% top',
       scrub: 2.5,
       onUpdate(self) {
         const p = self.progress

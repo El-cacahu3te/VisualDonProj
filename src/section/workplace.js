@@ -127,9 +127,9 @@
     textPanel.innerHTML = `
       <div class="wk-eyebrow"  id="wk-ey">Le monde professionnel</div>
       <div class="wk-headline" id="wk-hl">Une fleur, toutes les inégalités.</div>
-      <div class="wk-body"     id="wk-bd">Chaque pétale représente un domaine ou une réalité.<br><br>
-        La partie <em>opaque</em> = la part des femmes.<br>
-        La partie <em>transparente</em> = la part des hommes.<br>
+      <div class="wk-body"     id="wk-bd">Chaque pétale représente un domaine ou une réalité.
+        La partie <em>opaque</em> = la part des femmes.
+        La partie <em>transparente</em> = la part des hommes.
         Le rayon = le poids du secteur.</div>
       <div class="wk-note"     id="wk-nt">Survolez un pétale pour voir le détail.</div>
     `;
@@ -394,31 +394,35 @@
       {
         ey: "Le monde professionnel",
         hl: "Une fleur, toutes les inégalités.",
-        bd: `Chaque pétale représente un domaine ou une réalité.<br><br>
-             La partie <em>opaque</em> = la part des femmes.<br>
-             La partie <em>transparente</em> = la part des hommes.<br>
-             Le rayon = le poids du secteur.`,
+        bd: `
+          <p>Chaque pétale représente un domaine ou une réalité.</p>
+          <p>La partie <em>opaque</em> = la part des femmes.<br>
+          La partie <em>transparente</em> = la part des hommes.<br>
+          Le rayon = le poids du secteur.</p>`,
         nt: "Survolez un pétale pour voir le détail.",
       },
       {
         ey: "Les secteurs professionnels",
         hl: "De 76% à 10%.",
-        bd: `La santé emploie <strong>76% de femmes</strong>.<br>
-             La construction, seulement <strong>10%</strong>.<br><br>
-             Un écart de 66 points entre les deux extrêmes —<br>
-             dans le même marché du travail.`,
+        bd: `
+          <p>La santé emploie <strong>76% de femmes</strong>.<br>
+          La construction, seulement <strong>10%</strong>.</p>
+          <p>Un écart de 66 points entre les deux extrêmes —<br>
+          dans le même marché du travail.</p>`,
         nt: "Ces déséquilibres ne sont pas naturels. Ils sont construits.",
       },
       {
         ey: "Les inégalités structurelles",
         hl: "Même en travaillant, les écarts persistent.",
-        bd: `<strong>38,6%</strong> des postes de direction seulement<br>
-             sont occupés par des femmes.<br><br>
-             <strong>59%</strong> des femmes actives travaillent à temps partiel,<br>
-             contre <strong>20%</strong> des hommes.`,
+        bd: `
+          <p><strong>38,6%</strong> des postes de direction seulement<br>
+          sont occupés par des femmes.</p>
+          <p><strong>59%</strong> des femmes actives travaillent à temps partiel,<br>
+          contre <strong>20%</strong> des hommes.</p>`,
         nt: "Dès l'arrivée d'un enfant, la contribution des femmes au revenu du ménage chute à 28%.",
       },
-    ];
+    ]
+    
 
     function setScene(idx) {
       const s = scenes[idx];
