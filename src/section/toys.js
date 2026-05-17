@@ -127,8 +127,8 @@ export default function initToys() {
     // ── BADGES STATS ─────────────────────────────────────────────────────────
     const statBadges = {}
       ;[
-        { id: 'poupee', stat: '81% filles · 19% garçons', label: 'Poupée' },
-        { id: 'petites_voitures', stat: '89% garçons · 32% filles', label: 'Petites voitures' },
+        { id: 'poupee', stat: '81% filles · 19% garçons', label: 'jouent à la poupée' },
+        { id: 'petites_voitures', stat: '89% garçons · 32% filles', label: 'jouent aux petites voitures' },
       ].forEach(({ id, stat, label }) => {
         const el = document.createElement('div')
         el.className = 'toys-stat-badge'
