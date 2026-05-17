@@ -40,7 +40,7 @@ export default function initFeminicide() {
     textPanel.className = "fm-text";
     textPanel.innerHTML = `
       <div class="fm-eyebrow" id="fm-eyebrow">${DATA.title}</div>
-      <div class="fm-headline" id="fm-headline">Carole aurait eu 36 ans.</div>
+      <div class="fm-headline" id="fm-headline">Carole aurait eu 39 ans.</div>
       <div class="fm-body" id="fm-body">
         En ${DATA.year}, <strong>${DATA.totalVictims} femmes</strong> ont été tuées en Suisse.<br><br>
         ${DATA.description}
