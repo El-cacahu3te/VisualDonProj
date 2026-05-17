@@ -1,4 +1,4 @@
-  import '../css/workplace.css'  // ← CSS externalisé
+import '../css/workplace.css'  // ← CSS externalisé
   export default function initWorkplace() {
 
     function loadScript(src, cb) {
@@ -16,13 +16,7 @@
       } else { gsap.registerPlugin(ScrollTrigger); build(); }
     }
 
-
-  // ── Données — tous les pétales ─────────────────────────────────────────────
-  // womenPct   : part visible opaque (femmes)
-  // radius     : rayon total du pétale (importance)
-  // color      : teinte du pétale
   const PETALS = [
-    // ── Secteurs professionnels ──
     {
       id: "sante",
       label: "Santé &\naction sociale",
@@ -69,7 +63,6 @@
       note: "10% de femmes — secteur le plus masculinisé",
       falling: true,
     },
-    // ── Inégalités structurelles ──
     {
       id: "direction",
       label: "Postes de\ndirection",
@@ -110,14 +103,12 @@
 
   const N = PETALS.length;
   const ANGLE_STEP = (2 * Math.PI) / N;
-  const GAP = 0.06; // espace entre pétales
+  const GAP = 0.06;
 
-  // ── Build ──────────────────────────────────────────────────────────────────
   function build() {
     const container = document.getElementById("leTravail");
     if (!container) return console.warn("#leTravail introuvable");
 
-    // ── DOM ──────────────────────────────────────────────────────────────────
     const sticky = document.createElement("div");
     sticky.className = "wk-sticky";
     container.appendChild(sticky);
@@ -144,7 +135,6 @@
     srcEl.textContent = "OFS – ESPA 2025 / Observatoire des inégalités";
     sticky.appendChild(srcEl);
 
-    // Légende
     const legend = document.createElement("div");
     legend.className = "wk-legend";
     legend.innerHTML = `
@@ -159,7 +149,6 @@
     `;
     viz.appendChild(legend);
 
-    // Info pétale
     const petalInfo = document.createElement("div");
     petalInfo.className = "wk-petal-info";
     petalInfo.innerHTML = `
@@ -168,11 +157,10 @@
     `;
     viz.appendChild(petalInfo);
 
-    // ── SVG fleur ─────────────────────────────────────────────────────────────
     const SVG_W = 1100, SVG_H = 1100;
     const CX = SVG_W / 2, CY = SVG_H / 2;
     const svgNS = "http://www.w3.org/2000/svg";
-    const MIN_R = 42; // rayon intérieur fixe (trou central)
+    const MIN_R = 42;
 
     const flowerWrap = document.createElement("div");
     flowerWrap.className = "wk-flower-wrap";
@@ -185,12 +173,10 @@
     svg.style.overflow = "visible";
     flowerWrap.appendChild(svg);
 
-    // ── Helpers géométrie ─────────────────────────────────────────────────────
     function pt(cx, cy, r, angle) {
       return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
     }
 
-    // Arc SVG : anneau entre rInner et rOuter, de startA à endA
     function arcPath(cx, cy, rInner, rOuter, startA, endA) {
       const s1 = pt(cx, cy, rInner, startA);
       const e1 = pt(cx, cy, rInner, endA);
@@ -208,31 +194,41 @@
 
     function f(n) { return n.toFixed(2); }
 
-    // ── Créer les pétales ─────────────────────────────────────────────────────
-    const petalEls    = [];
-    const labelEls    = [];
-    const catLabelEls = {};
+    // ── Tige et feuille EN PREMIER — passent derrière les pétales ────────────
+    const stem = document.createElementNS(svgNS, "path");
+    stem.setAttribute("d", `M${CX} ${CY + MIN_R} C${CX - 20} ${CY + MIN_R + 120}, ${CX + 28} ${CY + MIN_R + 280}, ${CX - 5} ${CY + MIN_R + 420}`);
+    stem.setAttribute("stroke", "#5a7a35");
+    stem.setAttribute("stroke-width", "4.5");
+    stem.setAttribute("stroke-linecap", "round");
+    stem.setAttribute("fill", "none");
+    svg.appendChild(stem);
 
-    // Séparateurs de catégories (arc texte entre secteurs et inégalités)
-    // On place les secteurs en premier (index 0–4), inégalités ensuite (5–8)
-    const sectorCount    = PETALS.filter(p => p.category === "secteur").length;
-    const inegaliteCount = PETALS.filter(p => p.category === "inegalite").length;
+    const leaf = document.createElementNS(svgNS, "path");
+    leaf.setAttribute("d", `M${CX} ${CY + MIN_R + 220} Q${CX + 65} ${CY + MIN_R + 185} ${CX + 55} ${CY + MIN_R + 248}`);
+    leaf.setAttribute("stroke", "#5a7a35");
+    leaf.setAttribute("stroke-width", "2.5");
+    leaf.setAttribute("stroke-linecap", "round");
+    leaf.setAttribute("fill", "none");
+    leaf.setAttribute("opacity", "0.7");
+    svg.appendChild(leaf);
+
+    // ── Pétales — ajoutés APRÈS la tige, donc par-dessus ─────────────────────
+    const petalEls = [];
+    const labelEls = [];
 
     PETALS.forEach((p, i) => {
       const startA = i * ANGLE_STEP - Math.PI / 2 + GAP / 2;
       const endA   = startA + ANGLE_STEP - GAP;
       const midA   = (startA + endA) / 2;
 
-      const rFull    = p.radius;                        // rayon total
-      const rWomen   = MIN_R + (rFull - MIN_R) * (p.womenPct / 100); // rayon femmes
+      const rFull  = p.radius;
+      const rWomen = MIN_R + (rFull - MIN_R) * (p.womenPct / 100);
 
-      // ── Groupe pétale ──
       const g = document.createElementNS(svgNS, "g");
       g.style.cursor = "pointer";
       g.style.opacity = "0";
       g.style.transformOrigin = `${CX}px ${CY}px`;
 
-      // Fond hommes (partie transparente — rayon complet)
       const pathMen = document.createElementNS(svgNS, "path");
       pathMen.setAttribute("d", arcPath(CX, CY, MIN_R, rFull, startA, endA));
       pathMen.setAttribute("fill", p.color);
@@ -241,14 +237,12 @@
       pathMen.setAttribute("stroke-width", "0.5");
       g.appendChild(pathMen);
 
-      // Part femmes (opaque)
       const pathWomen = document.createElementNS(svgNS, "path");
       pathWomen.setAttribute("d", arcPath(CX, CY, MIN_R, rWomen, startA, endA));
       pathWomen.setAttribute("fill", p.color);
       pathWomen.setAttribute("opacity", "0.85");
       g.appendChild(pathWomen);
 
-      // Contour pétale
       const pathBorder = document.createElementNS(svgNS, "path");
       pathBorder.setAttribute("d", arcPath(CX, CY, MIN_R, rFull, startA, endA));
       pathBorder.setAttribute("fill", "none");
@@ -257,20 +251,13 @@
       pathBorder.setAttribute("opacity", "0.4");
       g.appendChild(pathBorder);
 
-      // Ligne séparatrice femmes/hommes (tiret)
-      const midWomenPt1 = pt(CX, CY, MIN_R + 2, midA);
-      const midWomenPt2 = pt(CX, CY, rWomen,    midA);
-      // Petite marque à la jonction
-      const sepArcStart = midA - 0.04;
-      const sepArcEnd   = midA + 0.04;
       const sepPath = document.createElementNS(svgNS, "path");
       sepPath.setAttribute("d", arcPath(CX, CY, rWomen - 1, rWomen + 1, startA + 0.01, endA - 0.01));
       sepPath.setAttribute("fill", p.color);
       sepPath.setAttribute("opacity", "0.5");
       g.appendChild(sepPath);
 
-      // % femmes au milieu de la partie opaque
-      const labelR = MIN_R + (rWomen - MIN_R) * 0.55;
+      const labelR  = MIN_R + (rWomen - MIN_R) * 0.55;
       const labelPt = pt(CX, CY, labelR, midA);
       const txt = document.createElementNS(svgNS, "text");
       txt.setAttribute("x", f(labelPt.x));
@@ -285,24 +272,18 @@
       txt.textContent = `${p.womenPct}%`;
       g.appendChild(txt);
 
-      // Hover — décalage radial + transparence des autres
       g.addEventListener("mouseenter", () => {
-        // Ce pétale : léger décalage vers l'extérieur
         const dx = Math.cos(midA) * 30;
         const dy = Math.sin(midA) * 30;
         g.dataset.hovered = "1";
         g.style.transition = "transform 0.25s ease, opacity 0.25s ease";
         g.style.transform  = `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px)`;
-
-        // Les autres pétales : légèrement estompés
         petalEls.forEach(other => {
           if (other.g !== g) {
             other.g.style.transition = "opacity 0.25s ease";
             other.g.style.opacity = "0.3";
           }
         });
-
-        // Info
         document.getElementById("wk-info-pct").textContent  = `${p.womenPct}% de femmes`;
         document.getElementById("wk-info-note").textContent = p.note;
         petalInfo.classList.add("visible");
@@ -311,12 +292,10 @@
         delete g.dataset.hovered;
         g.style.transition = "transform 0.25s ease, opacity 0.25s ease";
         g.style.transform  = "";
-
         petalEls.forEach(other => {
           other.g.style.transition = "opacity 0.25s ease";
           other.g.style.opacity = other.g.dataset.baseOpacity || "1";
         });
-
         petalInfo.classList.remove("visible");
       });
 
@@ -324,7 +303,6 @@
       g.dataset.baseOpacity = "1";
       petalEls.push({ g, p, startA, endA, midA, rFull, rWomen });
 
-      // Label extérieur
       const labelRext = rFull + 42;
       const lp = pt(CX, CY, labelRext, midA);
       const labelDiv = document.createElement("div");
@@ -334,26 +312,7 @@
       labelEls.push({ el: labelDiv, svgPt: lp, midA });
     });
 
-    // Tige (comme toys.js) — descend depuis le centre vers le bas
-    const stem = document.createElementNS(svgNS, "path");
-    stem.setAttribute("d", `M${CX} ${CY + MIN_R} C${CX - 20} ${CY + MIN_R + 120}, ${CX + 28} ${CY + MIN_R + 280}, ${CX - 5} ${CY + MIN_R + 420}`);
-    stem.setAttribute("stroke", "#5a7a35");
-    stem.setAttribute("stroke-width", "4.5");
-    stem.setAttribute("stroke-linecap", "round");
-    stem.setAttribute("fill", "none");
-    svg.appendChild(stem);
-
-    // Feuille sur la tige
-    const leaf = document.createElementNS(svgNS, "path");
-    leaf.setAttribute("d", `M${CX} ${CY + MIN_R + 220} Q${CX + 65} ${CY + MIN_R + 185} ${CX + 55} ${CY + MIN_R + 248}`);
-    leaf.setAttribute("stroke", "#5a7a35");
-    leaf.setAttribute("stroke-width", "2.5");
-    leaf.setAttribute("stroke-linecap", "round");
-    leaf.setAttribute("fill", "none");
-    leaf.setAttribute("opacity", "0.7");
-    svg.appendChild(leaf);
-
-    // Cercle central
+    // ── Cercle central et point — par-dessus tout ─────────────────────────────
     const centerCircle = document.createElementNS(svgNS, "circle");
     centerCircle.setAttribute("cx", String(CX));
     centerCircle.setAttribute("cy", String(CY));
@@ -363,7 +322,6 @@
     centerCircle.setAttribute("stroke-width", "1");
     svg.appendChild(centerCircle);
 
-    // Petit point central
     const centerDot = document.createElementNS(svgNS, "circle");
     centerDot.setAttribute("cx", String(CX));
     centerDot.setAttribute("cy", String(CY));
@@ -371,58 +329,47 @@
     centerDot.setAttribute("fill", "#5a7a35");
     svg.appendChild(centerDot);
 
-    // ── Positionner les labels ────────────────────────────────────────────────
     function positionLabels() {
       const wRect = flowerWrap.getBoundingClientRect();
       const vRect = viz.getBoundingClientRect();
       const ox = wRect.left - vRect.left;
       const oy = wRect.top  - vRect.top;
-
-      labelEls.forEach(({ el, svgPt, midA }) => {
-        // Décalage pour que le label ne chevauche pas
-        const extraR  = 12;
-        const scaledX = ox + svgPt.x;
-        const scaledY = oy + svgPt.y;
-        el.style.left      = scaledX + "px";
-        el.style.top       = scaledY + "px";
+      labelEls.forEach(({ el, svgPt }) => {
+        el.style.left      = (ox + svgPt.x) + "px";
+        el.style.top       = (oy + svgPt.y) + "px";
         el.style.transform = "translate(-50%, -50%)";
       });
     }
 
-    // ── Narration ─────────────────────────────────────────────────────────────
     const scenes = [
       {
         ey: "Le monde professionnel",
         hl: "Une fleur, toutes les inégalités.",
-        bd: `
-          <p>Chaque pétale représente un domaine ou une réalité.</p>
-          <p>La partie <em>opaque</em> = la part des femmes.<br>
-          La partie <em>transparente</em> = la part des hommes.<br>
-          Le rayon = le poids du secteur.</p>`,
+        bd: `<p>Chaque pétale représente un domaine ou une réalité.</p>
+             <p>La partie <em>opaque</em> = la part des femmes.<br>
+             La partie <em>transparente</em> = la part des hommes.<br>
+             Le rayon = le poids du secteur.</p>`,
         nt: "Survolez un pétale pour voir le détail.",
       },
       {
         ey: "Les secteurs professionnels",
         hl: "De 76% à 10%.",
-        bd: `
-          <p>La santé emploie <strong>76% de femmes</strong>.<br>
-          La construction, seulement <strong>10%</strong>.</p>
-          <p>Un écart de 66 points entre les deux extrêmes —<br>
-          dans le même marché du travail.</p>`,
+        bd: `<p>La santé emploie <strong>76% de femmes</strong>.<br>
+             La construction, seulement <strong>10%</strong>.</p>
+             <p>Un écart de 66 points entre les deux extrêmes —<br>
+             dans le même marché du travail.</p>`,
         nt: "Ces déséquilibres ne sont pas naturels. Ils sont construits.",
       },
       {
         ey: "Les inégalités structurelles",
         hl: "Même en travaillant, les écarts persistent.",
-        bd: `
-          <p><strong>38,6%</strong> des postes de direction seulement<br>
-          sont occupés par des femmes.</p>
-          <p><strong>59%</strong> des femmes actives travaillent à temps partiel,<br>
-          contre <strong>20%</strong> des hommes.</p>`,
+        bd: `<p><strong>38,6%</strong> des postes de direction seulement<br>
+             sont occupés par des femmes.</p>
+             <p><strong>59%</strong> des femmes actives travaillent à temps partiel,<br>
+             contre <strong>20%</strong> des hommes.</p>`,
         nt: "Dès l'arrivée d'un enfant, la contribution des femmes au revenu du ménage chute à 28%.",
       },
-    ]
-    
+    ];
 
     function setScene(idx) {
       const s = scenes[idx];
@@ -436,7 +383,6 @@
       }, 200);
     }
 
-    // ── Init ──────────────────────────────────────────────────────────────────
     function initScene() {
       positionLabels();
       petalEls.forEach(({ g }) => { g.style.opacity = "0"; });
@@ -444,8 +390,6 @@
       legend.classList.remove("visible");
     }
 
-    // ── ScrollTrigger 1 : fleur apparaît (0%→30%) ─────────────────────────────
-    // Les secteurs s'ouvrent en éventail
     ScrollTrigger.create({
       trigger: container,
       start: "top top",
@@ -457,14 +401,11 @@
         const p = self.progress;
         legend.style.opacity = String(Math.min(1, p * 3));
         legend.classList.toggle("visible", p > 0.1);
-
-        // Tous les pétales apparaissent progressivement
         petalEls.forEach(({ g }, i) => {
           const thresh = (i / N) * 0.7;
           const lp = Math.max(0, Math.min(1, (p - thresh) / 0.3));
           g.style.opacity = String(lp);
           g.dataset.baseOpacity = String(lp);
-          // Scale d'entrée — uniquement si pas en hover (pas de translate actif)
           if (!g.dataset.hovered) {
             const sc = 0.3 + lp * 0.7;
             g.style.transform = `scale(${sc})`;
@@ -479,7 +420,6 @@
       },
     });
 
-    // ── ScrollTrigger 2 : focus secteurs (30%→55%) ───────────────────────────
     ScrollTrigger.create({
       trigger: container,
       start: "30% top",
@@ -498,7 +438,6 @@
       },
     });
 
-    // ── ScrollTrigger 3 : focus inégalités (55%→80%) ─────────────────────────
     ScrollTrigger.create({
       trigger: container,
       start: "55% top",
@@ -517,7 +456,6 @@
       },
     });
 
-    // ── Resize ────────────────────────────────────────────────────────────────
     let rt;
     window.addEventListener("resize", () => {
       clearTimeout(rt);
