@@ -45,3 +45,11 @@ The Pudding : Pour leur maîtrise de la "human-scale data", où de grands ensemb
 RTS / Le Temps : Notamment les dossiers d'investigation sur les féminicides en Suisse qui utilisent les données de Stop Feminizid pour cartographier les crimes et nommer les victimes afin de lutter contre l'oubli.<br>
 Data Against Feminicide (D’Ignazio) : Pour la méthodologie académique sur la manière de collecter des données de manière éthique et militante.<br>
 La métaphore organique : Inspiration puisée dans le Data Art (comme les travaux de Giorgia Lupi), où les formes (ici, une fleur qui se fane) servent à représenter la fragilité de la vie humaine face aux données chiffrées.
+
+
+## Installation 
+rérequis : Node.js + npm
+Installer : npm install
+Lancer (dev) : npm run dev puis ouvrir l’URL affichée (souvent http://localhost:5173)
+Build : npm run build
+Preview : npm run preview
