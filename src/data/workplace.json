@@ -1,0 +1,155 @@
+{
+  "id": "workplace",
+  "title": "La répartition des genres dans le monde professionnel",
+  "subtitle": "● = % de femmes  ●● = % d'hommes  ○ = % de travailleurs dans le domaine",
+  "source": "OFS – Enquête suisse sur la population active (ESPA), état 17.02.2026",
+  "year": 2025,
+  "note": "Au scroll, les informations apparaissent petit à petit. Le dernier pétale de la fleur tombe.",
+
+  "sectors": [
+    {
+      "id": "sante",
+      "label": "Santé et action sociale",
+      "petal": 1,
+      "womenPct": 76,
+      "menPct": 24,
+      "shareOfWorkforce": 15.2,
+      "dominance": "female",
+      "note": "Secteur le plus féminisé du marché du travail vaudois"
+    },
+    {
+      "id": "enseignement",
+      "label": "Enseignement",
+      "petal": 2,
+      "womenPct": 60,
+      "menPct": 40,
+      "shareOfWorkforce": 9.8,
+      "dominance": "female",
+      "note": null
+    },
+    {
+      "id": "info_com",
+      "label": "Information et communication",
+      "petal": 3,
+      "womenPct": 28,
+      "menPct": 72,
+      "shareOfWorkforce": 5.4,
+      "dominance": "male",
+      "note": "Secteur à forte dominance masculine malgré la tertiarisation"
+    },
+    {
+      "id": "transports",
+      "label": "Transports et entreposage",
+      "petal": 4,
+      "womenPct": 22,
+      "menPct": 78,
+      "shareOfWorkforce": 4.8,
+      "dominance": "male",
+      "note": null
+    },
+    {
+      "id": "construction",
+      "label": "Construction",
+      "petal": 5,
+      "womenPct": 10,
+      "menPct": 90,
+      "shareOfWorkforce": 6.1,
+      "dominance": "male",
+      "note": "Secteur le plus masculinisé — pétale qui tombe"
+    }
+  ],
+
+  "leadership": {
+    "title": "Part des femmes dans les positions dirigeantes",
+    "source": "OFS – ESPA, gr-f-20.04.02.06.02-cc © OFS 2026",
+    "note": "Ruptures de série en 2010 et 2021, données non publiées pour ces années",
+    "values2025": [
+      {
+        "id": "direction_ou_chef",
+        "label": "Membre de la direction ou cheffe",
+        "womenPct": 38.6,
+        "type": "combined"
+      },
+      {
+        "id": "direction",
+        "label": "Membre de la direction",
+        "womenPct": 37.7,
+        "type": "direction"
+      },
+      {
+        "id": "chef",
+        "label": "Exerçant une fonction de chef",
+        "womenPct": 34.8,
+        "type": "manager"
+      }
+    ]
+  },
+
+  "keyFigures": [
+    {
+      "id": "temps_partiel",
+      "label": "Personnes actives occupées à temps partiel",
+      "context": "Activité professionnelle en 2025",
+      "womenPct": 59,
+      "menPct": 20,
+      "unit": "%",
+      "note": "Les femmes sont 3x plus souvent à temps partiel que les hommes"
+    },
+    {
+      "id": "reduction_enfants",
+      "label": "Ont réduit leur taux d'occupation pour s'occuper d'enfants de moins de 15 ans",
+      "context": "Conciliation emploi et famille en 2018",
+      "womenPct": 60,
+      "menPct": 13,
+      "unit": "%",
+      "note": "Écart de 47 points — la charge parentale repose massivement sur les femmes"
+    },
+    {
+      "id": "revenu_menage_enfants",
+      "label": "Contribution au revenu du ménage (couples avec enfant 0–3 ans)",
+      "context": "Contribution individuelle au revenu du travail du ménage en 2023",
+      "womenPct": 28,
+      "menPct": 72,
+      "unit": "%",
+      "note": "Dès l'arrivée d'un enfant en bas âge, la contribution économique des femmes s'effondre"
+    }
+  ],
+
+  "scenes": [
+    {
+      "id": "scene_intro",
+      "step": 0,
+      "label": "Le camembert",
+      "description": "Un pétale par secteur. Le rayon intérieur = % de femmes. Le rayon extérieur = poids du secteur dans l'économie."
+    },
+    {
+      "id": "scene_sectors",
+      "step": 1,
+      "label": "Les secteurs s'ouvrent",
+      "description": "Santé, enseignement, transports, info & com, construction. Du plus féminin au plus masculin.",
+      "revealPetals": [1, 2, 3, 4]
+    },
+    {
+      "id": "scene_fall",
+      "step": 2,
+      "label": "Le pétale qui tombe",
+      "description": "Construction : 10% de femmes, 90% d'hommes. Le pétale le plus déséquilibré se détache.",
+      "revealPetals": [5],
+      "fallingPetal": 5
+    },
+    {
+      "id": "scene_leadership",
+      "step": 3,
+      "label": "Aux postes de direction",
+      "description": "38,6% des postes dirigeants sont occupés par des femmes en 2025. En progression, mais encore loin de la parité.",
+      "highlight": "leadership"
+    },
+    {
+      "id": "scene_family",
+      "step": 4,
+      "label": "Le travail invisible",
+      "description": "Dès l'arrivée d'un enfant, les femmes réduisent leur activité professionnelle. Leur contribution au revenu du ménage chute à 28%.",
+      "highlight": "keyFigures"
+    }
+  ]
+}

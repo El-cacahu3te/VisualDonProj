@@ -1,0 +1,193 @@
+{
+  "id": "toys",
+  "title": "Jeux des enfants selon leur sexe",
+  "subtitle": "Unité : %",
+  "source": "Ined – Données 2013-2014 – © Observatoire des inégalités",
+  "note": "Enfants âgés de deux ans.",
+
+  "interestClusters": [
+    {
+      "id": "care",
+      "label": "Soin",
+      "description": "Poupée, peluches",
+      "position": { "x": 0.2, "y": 0.4 }
+    },
+    {
+      "id": "action",
+      "label": "Action",
+      "description": "Balle, petites voitures",
+      "position": { "x": 0.8, "y": 0.4 }
+    },
+    {
+      "id": "logic",
+      "label": "Construction & logique",
+      "description": "Puzzles, jeux à empiler",
+      "position": { "x": 0.5, "y": 0.8 }
+    }
+  ],
+
+  "toys": [
+    {
+      "id": "poupee",
+      "label": "Poupée",
+      "cluster": "care",
+      "girls": 81,
+      "boys": 19,
+      "gapPoints": 62,
+      "genderedToward": "girls"
+    },
+    {
+      "id": "peluches",
+      "label": "Peluches",
+      "cluster": "care",
+      "girls": 63,
+      "boys": 52,
+      "gapPoints": 11,
+      "genderedToward": "girls"
+    },
+    {
+      "id": "dessins",
+      "label": "Dessins",
+      "cluster": "care",
+      "girls": 73,
+      "boys": 58,
+      "gapPoints": 15,
+      "genderedToward": "girls"
+    },
+    {
+      "id": "balle",
+      "label": "Balle",
+      "cluster": "action",
+      "girls": 57,
+      "boys": 76,
+      "gapPoints": -19,
+      "genderedToward": "boys"
+    },
+    {
+      "id": "petites_voitures",
+      "label": "Petites voitures",
+      "cluster": "action",
+      "girls": 32,
+      "boys": 89,
+      "gapPoints": -57,
+      "genderedToward": "boys"
+    },
+    {
+      "id": "puzzles",
+      "label": "Puzzles",
+      "cluster": "logic",
+      "girls": 35,
+      "boys": 30,
+      "gapPoints": 5,
+      "genderedToward": "neutral"
+    },
+    {
+      "id": "jeux_empiler",
+      "label": "Jeux à empiler",
+      "cluster": "logic",
+      "girls": 54,
+      "boys": 61,
+      "gapPoints": -7,
+      "genderedToward": "neutral"
+    },
+    {
+      "id": "jeux_bain",
+      "label": "Jeux de bain ou d'eau",
+      "cluster": "logic",
+      "girls": 84,
+      "boys": 86,
+      "gapPoints": -2,
+      "genderedToward": "neutral"
+    }
+  ],
+
+  "sprouts": [
+    { "id": "s001", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s002", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s003", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s004", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s005", "gender": "girl", "freeCluster": "action", "freedToy": "poupee" },
+    { "id": "s006", "gender": "girl", "freeCluster": "logic",  "freedToy": "poupee" },
+    { "id": "s007", "gender": "girl", "freeCluster": "action", "freedToy": "poupee" },
+    { "id": "s008", "gender": "girl", "freeCluster": "logic",  "freedToy": "poupee" },
+    { "id": "s009", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s010", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s011", "gender": "girl", "freeCluster": "care",   "freedToy": "peluches" },
+    { "id": "s012", "gender": "girl", "freeCluster": "care",   "freedToy": "peluches" },
+    { "id": "s013", "gender": "girl", "freeCluster": "logic",  "freedToy": "peluches" },
+    { "id": "s014", "gender": "girl", "freeCluster": "action", "freedToy": "balle" },
+    { "id": "s015", "gender": "girl", "freeCluster": "action", "freedToy": "balle" },
+    { "id": "s016", "gender": "girl", "freeCluster": "action", "freedToy": "petites_voitures" },
+    { "id": "s017", "gender": "girl", "freeCluster": "logic",  "freedToy": "puzzles" },
+    { "id": "s018", "gender": "girl", "freeCluster": "logic",  "freedToy": "puzzles" },
+    { "id": "s019", "gender": "girl", "freeCluster": "logic",  "freedToy": "jeux_empiler" },
+    { "id": "s020", "gender": "girl", "freeCluster": "care",   "freedToy": "dessins" },
+    { "id": "s021", "gender": "girl", "freeCluster": "action", "freedToy": "dessins" },
+    { "id": "s022", "gender": "girl", "freeCluster": "care",   "freedToy": "jeux_bain" },
+    { "id": "s023", "gender": "girl", "freeCluster": "action", "freedToy": "jeux_bain" },
+    { "id": "s024", "gender": "girl", "freeCluster": "logic",  "freedToy": "jeux_bain" },
+    { "id": "s025", "gender": "girl", "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s026", "gender": "boy",  "freeCluster": "action", "freedToy": "petites_voitures" },
+    { "id": "s027", "gender": "boy",  "freeCluster": "action", "freedToy": "petites_voitures" },
+    { "id": "s028", "gender": "boy",  "freeCluster": "action", "freedToy": "petites_voitures" },
+    { "id": "s029", "gender": "boy",  "freeCluster": "action", "freedToy": "petites_voitures" },
+    { "id": "s030", "gender": "boy",  "freeCluster": "care",   "freedToy": "petites_voitures" },
+    { "id": "s031", "gender": "boy",  "freeCluster": "logic",  "freedToy": "petites_voitures" },
+    { "id": "s032", "gender": "boy",  "freeCluster": "care",   "freedToy": "petites_voitures" },
+    { "id": "s033", "gender": "boy",  "freeCluster": "logic",  "freedToy": "petites_voitures" },
+    { "id": "s034", "gender": "boy",  "freeCluster": "action", "freedToy": "balle" },
+    { "id": "s035", "gender": "boy",  "freeCluster": "action", "freedToy": "balle" },
+    { "id": "s036", "gender": "boy",  "freeCluster": "action", "freedToy": "balle" },
+    { "id": "s037", "gender": "boy",  "freeCluster": "care",   "freedToy": "balle" },
+    { "id": "s038", "gender": "boy",  "freeCluster": "logic",  "freedToy": "balle" },
+    { "id": "s039", "gender": "boy",  "freeCluster": "care",   "freedToy": "peluches" },
+    { "id": "s040", "gender": "boy",  "freeCluster": "logic",  "freedToy": "peluches" },
+    { "id": "s041", "gender": "boy",  "freeCluster": "care",   "freedToy": "poupee" },
+    { "id": "s042", "gender": "boy",  "freeCluster": "action", "freedToy": "poupee" },
+    { "id": "s043", "gender": "boy",  "freeCluster": "logic",  "freedToy": "puzzles" },
+    { "id": "s044", "gender": "boy",  "freeCluster": "logic",  "freedToy": "puzzles" },
+    { "id": "s045", "gender": "boy",  "freeCluster": "action", "freedToy": "jeux_empiler" },
+    { "id": "s046", "gender": "boy",  "freeCluster": "logic",  "freedToy": "jeux_empiler" },
+    { "id": "s047", "gender": "boy",  "freeCluster": "care",   "freedToy": "dessins" },
+    { "id": "s048", "gender": "boy",  "freeCluster": "action", "freedToy": "dessins" },
+    { "id": "s049", "gender": "boy",  "freeCluster": "logic",  "freedToy": "jeux_bain" },
+    { "id": "s050", "gender": "boy",  "freeCluster": "care",   "freedToy": "jeux_bain" }
+  ],
+
+  "scenes": [
+    {
+      "id": "scene_free",
+      "step": 0,
+      "label": "Un jardin libre",
+      "description": "50 enfants. Chacun gravite librement autour des centres d'intérêt qui l'attirent. On ne sait pas qui est qui.",
+      "sproutState": {
+        "showGender": false,
+        "positionBy": "freeCluster",
+        "fadedSprouts": []
+      }
+    },
+    {
+      "id": "scene_gendered",
+      "step": 1,
+      "label": "Le jouet leur est imposé",
+      "description": "Dès 2 ans, les jouets sont genrés. Les enfants sont redirigés — certains quittent le cluster qui leur plaisait.",
+      "sproutState": {
+        "showGender": true,
+        "positionBy": "freedToy",
+        "fadedSprouts": "mismatched"
+      }
+    },
+    {
+      "id": "scene_gap",
+      "step": 2,
+      "label": "L'écart le plus fort",
+      "description": "Poupée : 81% filles, 19% garçons. Petites voitures : 89% garçons, 32% filles. Ce ne sont pas des goûts — ce sont des assignations.",
+      "sproutState": {
+        "showGender": true,
+        "positionBy": "freedToy",
+        "fadedSprouts": "all_except_highlighted",
+        "highlightedToys": ["poupee", "petites_voitures"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+/* App shell */
+#app {
+   width: min(100% - 2rem, 70.375rem);
+   margin: 0 auto;
+   border-inline: 1px solid var(--border);
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+#center {
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+   justify-content: center;
+   align-items: center;
+   padding: 2rem;
+}
+
+#next-steps {
+   display: flex;
+   border-top: 1px solid var(--border);
+   text-align: left;
+}
+
+#next-steps>div {
+   flex: 1;
+   padding: 2rem;
+}
+
+#next-steps .icon {
+   width: 1.375rem;
+   height: 1.375rem;
+   margin-bottom: 1rem;
+}
+
+#docs {
+   border-right: 1px solid var(--border);
+}
+
+/* Intro */
+#intro {
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   padding: 0 2rem;
+}
+
+#intro h1 {
+   font-size: clamp(3.5rem, 10vw, 6rem);
+   letter-spacing: -0.035em;
+   margin: 0;
+}
+
+/* Sections narratives */
+.narrative-section {
+   max-width: 40rem;
+   margin-inline: auto;
+   padding: 8vh 2rem;
+}
+
+.narrative-section h2 {
+   margin: 0.5rem 0 2rem;
+}
+
+.narrative-section>p:first-child {
+   font-size: 0.6875rem;
+   font-weight: 600;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   opacity: 0.55;
+   margin-bottom: 0.5rem;
+}
+
+.narrative-section p {
+   font-size: 1.0625rem;
+   line-height: 1.9;
+   margin-bottom: 1.8rem;
+}
+
+.intro-scroll-hint {
+   margin-top: 1.5rem;
+   font-size: 0.875rem;
+   letter-spacing: 0.15em;
+   text-transform: uppercase;
+   opacity: 0.45;
+}
+
+/* Footer */
+footer {
+   max-width: min(820px, 90vw);
+   margin-inline: auto;
+   padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 4rem;
+   font-size: clamp(0.6rem, 0.8vw, 0.68rem);
+   font-weight: 500;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   color: #888;
+   line-height: 1.9;
+   border-top: 1px solid #ccc;
+}
+
+/* Media queries layout */
+@media (max-width: 1024px) {
+   #center {
+      padding: 2rem 1.25rem 1.5rem;
+      gap: 1.125rem;
+   }
+
+   #next-steps {
+      flex-direction: column;
+   }
+
+   #next-steps>div {
+      padding: 1.5rem 1.25rem;
+   }
+
+   #docs {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+   }
+
+   #next-steps ul {
+      padding-left: 0;
+   }
+
+   .narrative-section {
+      padding: 6vh 1.25rem;
+   }
+}
+
+@media (max-width: 600px) {
+   footer {
+      max-width: 100%;
+      padding-inline: 1.25rem;
+   }
+}
